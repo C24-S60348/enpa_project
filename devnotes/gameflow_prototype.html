@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>ENPA — Game Flow Prototype</title>
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; background: #0a0f1e; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
+
+    /* ─── Dev Label ─────────────────────────────────────────────── */
+    #dev-label {
+      position: fixed; top: 8px; left: 50%; transform: translateX(-50%);
+      background: rgba(255,215,0,0.15); border: 1px solid rgba(255,215,0,0.4);
+      color: #ffd54f; font-size: 11px; padding: 3px 10px; border-radius: 20px;
+      letter-spacing: 1px; z-index: 100; pointer-events: none;
+    }
+
+    /* ─── Phone Frame (desktop only) ───────────────────────────── */
+    #frame-wrap {
+      display: flex; align-items: center; justify-content: center;
+      width: 100vw; height: 100vh;
+    }
+    #phone-frame {
+      position: relative;
+      width: 860px; height: 500px;
+      background: #111;
+      border-radius: 36px;
+      box-shadow: 0 0 0 2px #333, 0 0 0 6px #1a1a1a, 0 30px 80px rgba(0,0,0,0.8);
+      padding: 20px 28px;
+      overflow: hidden;
+    }
+    /* Side buttons */
+    #phone-frame::before {
+      content: '';
+      position: absolute; left: -6px; top: 100px;
+      width: 5px; height: 60px;
+      background: #222; border-radius: 3px 0 0 3px;
+      box-shadow: 0 70px 0 #222;
+    }
+    #phone-frame::after {
+      content: '';
+      position: absolute; right: -6px; top: 140px;
+      width: 5px; height: 80px;
+      background: #222; border-radius: 0 3px 3px 0;
+    }
+
+    /* ─── Game Canvas ───────────────────────────────────────────── */
+    #game-canvas {
+      width: 100%; height: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, #0d1b2a 0%, #1b3a5c 100%);
+    }
+
+    /* ─── Screen System ─────────────────────────────────────────── */
+    .screen {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      transform: translateX(40px);
+      padding: 18px 24px;
+    }
+    .screen.active {
+      opacity: 1; pointer-events: all;
+      transform: translateX(0);
+    }
+    .screen.exit {
+      opacity: 0; transform: translateX(-40px);
+    }
+
+    /* ─── Typography ────────────────────────────────────────────── */
+    .screen-title {
+      font-size: 13px; font-weight: 700; letter-spacing: 2px;
+      color: #4fc3f7; text-transform: uppercase; margin-bottom: 6px;
+    }
+    .screen-subtitle { font-size: 11px; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+    h1 { font-size: 28px; font-weight: 800; color: #fff; line-height: 1.1; }
+    h2 { font-size: 18px; font-weight: 700; color: #fff; }
+    h3 { font-size: 14px; font-weight: 600; color: #4fc3f7; }
+    p  { font-size: 12px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+
+    /* ─── Buttons ───────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 10px 22px; border: none; border-radius: 30px;
+      font-size: 13px; font-weight: 700; cursor: pointer;
+      transition: transform 0.1s, box-shadow 0.2s; letter-spacing: 0.5px;
+      user-select: none;
+    }
+    .btn:active { transform: scale(0.95); }
+    .btn-primary { background: linear-gradient(135deg, #29b6f6, #0288d1); color: #fff; box-shadow: 0 4px 15px rgba(41,182,246,0.4); }
+    .btn-primary:hover { box-shadow: 0 6px 20px rgba(41,182,246,0.6); }
+    .btn-gold { background: linear-gradient(135deg, #ffd54f, #ffab00); color: #1a1a1a; box-shadow: 0 4px 15px rgba(255,171,0,0.4); }
+    .btn-ghost { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.2); }
+    .btn-sm { padding: 6px 14px; font-size: 11px; }
+    .btn-back { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); font-size: 11px; padding: 5px 12px; border-radius: 20px; border: none; cursor: pointer; }
+    .btn-back:hover { background: rgba(255,255,255,0.15); }
+
+    /* ─── Pulse animation (tap to start) ───────────────────────── */
+    @keyframes pulse { 0%,100% { box-shadow: 0 4px 15px rgba(255,171,0,0.4); } 50% { box-shadow: 0 6px 30px rgba(255,171,0,0.8); } }
+    .pulse { animation: pulse 1.8s ease-in-out infinite; }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    .float { animation: float 3s ease-in-out infinite; }
+    @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+
+    /* ─── Background decorations ────────────────────────────────── */
+    .bg-circles {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .bg-circles span {
+      position: absolute; border-radius: 50%;
+      background: radial-gradient(circle, rgba(79,195,247,0.08), transparent 70%);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SCREEN 1 — TITLE / SPLASH
+    ═══════════════════════════════════════════════════════════════ */
+    #s-title {
+      align-items: center; justify-content: center; text-align: center;
+      background: linear-gradient(160deg, #0d1b2a 0%, #0a2744 50%, #0d1b2a 100%);
+    }
+    #s-title .bg-circles span:nth-child(1) { width: 300px; height: 300px; top: -80px; left: -80px; }
+    #s-title .bg-circles span:nth-child(2) { width: 200px; height: 200px; bottom: -60px; right: -40px; }
+    #s-title .logo-wrap { margin-bottom: 16px; }
+    #s-title .logo {
+      font-size: 56px; font-weight: 900; letter-spacing: 8px;
+      background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 40%, #ffd54f 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      line-height: 1;
+    }
+    #s-title .logo-sub { font-size: 10px; letter-spacing: 3px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    #s-title h2 { font-size: 15px; font-weight: 400; color: rgba(255,255,255,0.7); margin-bottom: 28px; }
+    #s-title .authors { font-size: 10px; color: rgba(255,255,255,0.3); position: absolute; bottom: 18px; letter-spacing: 0.5px; }
+    #s-title .topic-badge {
+      display: inline-block; background: rgba(79,195,247,0.1); border: 1px solid rgba(79,195,247,0.3);
+      color: #4fc3f7; font-size: 10px; letter-spacing: 1px; padding: 4px 12px;
+      border-radius: 20px; margin-bottom: 20px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SCREEN 2 — INTRODUCTION
+    ═══════════════════════════════════════════════════════════════ */
+    #s-intro { flex-direction: row; gap: 20px; align-items: stretch; }
+    #s-intro .intro-left { flex: 0 0 140px; display: flex; flex-direction: column; justify-content: center; }
+    #s-intro .intro-icon {
+      width: 80px; height: 80px; border-radius: 20px;
+      background: linear-gradient(135deg, #1565c0, #29b6f6);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px; margin-bottom: 14px;
+      box-shadow: 0 8px 24px rgba(41,182,246,0.3);
+    }
+    #s-intro .intro-right { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    #s-intro .intro-scroll {
+      flex: 1; overflow-y: auto; padding-right: 6px; margin-bottom: 10px;
+      scrollbar-width: thin; scrollbar-color: rgba(79,195,247,0.3) transparent;
+    }
+    #s-intro .intro-scroll p { margin-bottom: 10px; }
+    #s-intro .key-points { display: flex; flex-direction: column; gap: 5px; margin-top: 8px; }
+    #s-intro .kp {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(79,195,247,0.08); border-left: 2px solid #4fc3f7;
+      padding: 5px 10px; border-radius: 0 6px 6px 0; font-size: 11px; color: rgba(255,255,255,0.8);
+    }
+    #s-intro .kp-dot { width: 6px; height: 6px; border-radius: 50%; background: #4fc3f7; flex-shrink: 0; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SCREEN 3 — MAIN MENU
+    ═══════════════════════════════════════════════════════════════ */
+    #s-menu { align-items: center; }
+    #s-menu .menu-header { text-align: center; margin-bottom: 20px; }
+    #s-menu .menu-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+      width: 100%; max-width: 600px;
+    }
+    .menu-card {
+      display: flex; flex-direction: column; align-items: center;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; padding: 14px 10px; cursor: pointer;
+      transition: transform 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s;
+      gap: 8px;
+    }
+    .menu-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.12); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+    .menu-card .card-badge {
+      width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; color: #fff;
+    }
+    .menu-card .card-icon { font-size: 26px; }
+    .menu-card .card-label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.9); }
+    .menu-card.ebook  { border-color: rgba(79,195,247,0.3); }
+    .menu-card.ebook  .card-badge { background: #0288d1; }
+    .menu-card.ebook:hover  { border-color: #4fc3f7; }
+    .menu-card.game   { border-color: rgba(129,199,132,0.3); }
+    .menu-card.game   .card-badge { background: #388e3c; }
+    .menu-card.game:hover   { border-color: #81c784; }
+    .menu-card.quiz   { border-color: rgba(255,183,77,0.3); }
+    .menu-card.quiz   .card-badge { background: #f57c00; }
+    .menu-card.quiz:hover   { border-color: #ffb74d; }
+    .menu-card.exercise { border-color: rgba(206,147,216,0.3); }
+    .menu-card.exercise .card-badge { background: #7b1fa2; }
+    .menu-card.exercise:hover { border-color: #ce93d8; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SCREEN 4 — eBOOK
+    ═══════════════════════════════════════════════════════════════ */
+    #s-ebook { flex-direction: column; }
+    #s-ebook .ebook-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    #s-ebook .ebook-body { flex: 1; overflow-y: auto; }
+    .ebook-section { margin-bottom: 12px; }
+    .ebook-section h3 { margin-bottom: 6px; font-size: 12px; }
+    .ebook-section p  { font-size: 11px; }
+    .stmt-list { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+    .stmt-item {
+      display: flex; gap: 10px; align-items: flex-start;
+      background: rgba(255,255,255,0.05); border-radius: 8px; padding: 8px 10px;
+    }
+    .stmt-num {
+      width: 22px; height: 22px; border-radius: 50%; background: #0288d1;
+      font-size: 11px; font-weight: 700; color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .stmt-info h4 { font-size: 11px; font-weight: 600; color: #4fc3f7; margin-bottom: 2px; }
+    .stmt-info p  { font-size: 10px; color: rgba(255,255,255,0.6); }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SCREEN 5 — GAME (Mix & Match)
+    ═══════════════════════════════════════════════════════════════ */
+    #s-game { flex-direction: column; }
+    #s-game .game-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    #s-game .game-score {
+      background: rgba(129,199,132,0.15); border: 1px solid rgba(129,199,132,0.3);
+      padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; color: #81c784;
+    }
+    #s-game .game-instruction { font-size: 11px; color: rgba(255,255,255,0.5); margin-bottom: 10px; text-align: center; }
+    #s-game .match-area { display: flex; gap: 14px; flex: 1; }
+    #s-game .match-col { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    #s-game .match-col-label { font-size: 10px; letter-spacing: 1px; color: rgba(255,255,255,0.4); margin-bottom: 2px; text-align: center; }
+    .match-card {
+      padding: 7px 10px; border-radius: 10px; font-size: 11px; font-weight: 600;
+      cursor: pointer; text-align: center; border: 1.5px solid transparent;
+      transition: all 0.2s; user-select: none; color: #fff;
+      background: rgba(255,255,255,0.07);
+    }
+    .match-card.left-card  { border-color: rgba(79,195,247,0.3); color: #e3f2fd; }
+    .match-card.right-card { border-color: rgba(255,183,77,0.3); color: #fff8e1; }
+    .match-card.selected   { background: rgba(79,195,247,0.2); border-color: #4fc3f7; transform: scale(1.03); }
+    .match-card.matched    { background: rgba(102,187,106,0.2); border-color: #66bb6a; color: #a5d6a7; cursor: default; opacity: 0.7; }
+    .match-card.wrong      { animation: shake 0.4s ease; }
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      20%     { transform: translateX(-6px); }
+      40%     { transform: translateX(6px); }
+      60%     { transform: translateX(-4px); }
+      80%     { transform: translateX(4px); }
+    }
+    #game-result {
+      display: none; position: absolute; inset: 0; border-radius: 20px;
+      background: rgba(0,0,0,0.8); align-items: center; justify-content: center;
+      flex-direction: column; gap: 12px; z-index: 10;
+    }
+    #game-result.show { display: flex; }
+    #game-result h2 { font-size: 24px; color: #ffd54f; }
+    #game-result p  { color: rgba(255,255,255,0.7); font-size: 13px; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SCREEN 6 — QUIZ
+    ═══════════════════════════════════════════════════════════════ */
+    #s-quiz { flex-direction: column; }
+    #s-quiz .quiz-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    #s-quiz .quiz-progress { font-size: 11px; color: rgba(255,255,255,0.5); }
+    #s-quiz .question-box {
+      background: rgba(255,183,77,0.08); border: 1px solid rgba(255,183,77,0.2);
+      border-radius: 12px; padding: 12px 14px; margin-bottom: 12px;
+    }
+    #s-quiz .question-box p { font-size: 12px; color: rgba(255,255,255,0.9); line-height: 1.5; }
+    .quiz-options { display: flex; flex-direction: column; gap: 7px; flex: 1; }
+    .quiz-opt {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 9px 12px; cursor: pointer;
+      transition: all 0.2s; font-size: 12px; color: rgba(255,255,255,0.85);
+    }
+    .quiz-opt:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,183,77,0.4); }
+    .quiz-opt .opt-letter {
+      width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(255,183,77,0.15); border: 1px solid rgba(255,183,77,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: #ffb74d;
+    }
+    .quiz-opt.correct { background: rgba(102,187,106,0.2); border-color: #66bb6a; }
+    .quiz-opt.correct .opt-letter { background: #388e3c; border-color: #66bb6a; color: #fff; }
+    .quiz-opt.wrong   { background: rgba(239,83,80,0.15); border-color: #ef5350; }
+    .quiz-opt.wrong   .opt-letter { background: #c62828; border-color: #ef5350; color: #fff; }
+    .quiz-opt.disabled { pointer-events: none; opacity: 0.6; }
+    #quiz-feedback {
+      margin-top: 8px; font-size: 12px; font-weight: 600; padding: 8px 12px;
+      border-radius: 8px; display: none;
+    }
+    #quiz-feedback.correct-fb { background: rgba(102,187,106,0.2); color: #a5d6a7; display: block; }
+    #quiz-feedback.wrong-fb   { background: rgba(239,83,80,0.15); color: #ef9a9a; display: block; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SCREEN 7 — EXERCISE
+    ═══════════════════════════════════════════════════════════════ */
+    #s-exercise { flex-direction: column; }
+    #s-exercise .ex-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    #s-exercise .ex-body { flex: 1; overflow-y: auto; display: flex; gap: 14px; }
+    #s-exercise .ex-question { flex: 1; }
+    #s-exercise .ex-answer { flex: 1; }
+    .ex-card {
+      background: rgba(255,255,255,0.05); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px;
+    }
+    .ex-card h4 { font-size: 11px; font-weight: 700; color: #ce93d8; margin-bottom: 4px; }
+    .ex-card p  { font-size: 11px; color: rgba(255,255,255,0.75); line-height: 1.5; }
+    .ex-card ul { padding-left: 14px; }
+    .ex-card li { font-size: 11px; color: rgba(255,255,255,0.75); line-height: 1.8; }
+    .answer-panel {
+      background: rgba(206,147,216,0.08); border: 1px solid rgba(206,147,216,0.2);
+      border-radius: 10px; padding: 10px 12px;
+    }
+    .answer-panel h4 { font-size: 11px; color: #ce93d8; margin-bottom: 6px; font-weight: 700; }
+    .t-account { width: 100%; border-collapse: collapse; font-size: 10px; margin-bottom: 8px; }
+    .t-account th { background: rgba(206,147,216,0.2); color: #ce93d8; padding: 3px 6px; font-size: 10px; font-weight: 600; }
+    .t-account td { padding: 3px 6px; color: rgba(255,255,255,0.8); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .t-account .total { border-top: 1.5px solid rgba(206,147,216,0.5); font-weight: 700; color: #ce93d8; }
+    #answer-hidden { display: none; }
+    #answer-hidden.visible { display: block; }
+
+    /* ─── Nav Bar ────────────────────────────────────────────────── */
+    .nav-row { display: flex; align-items: center; justify-content: space-between; }
+
+    /* ─── Flow Map (bottom of page, outside phone) ──────────────── */
+    #flow-map {
+      position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 4px;
+      background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 30px; padding: 6px 14px; z-index: 50;
+    }
+    .flow-node {
+      font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 0.5px;
+      padding: 2px 8px; border-radius: 12px; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .flow-node:hover { color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.1); }
+    .flow-node.active-node { color: #4fc3f7; background: rgba(79,195,247,0.15); }
+    .flow-arrow { color: rgba(255,255,255,0.2); font-size: 10px; }
+
+    /* ─── Mobile fullscreen ──────────────────────────────────────── */
+    @media (max-width: 900px) {
+      #phone-frame { width: 100vw; height: 100dvh; border-radius: 0; padding: 12px 16px; box-shadow: none; }
+      #phone-frame::before, #phone-frame::after { display: none; }
+      #game-canvas { border-radius: 0; }
+      #dev-label { display: none; }
+      #flow-map { bottom: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="dev-label">PROTOTYPE · ENPA GAME FLOW · CONSTRUCT 3 REFERENCE</div>
+
+<div id="frame-wrap">
+  <div id="phone-frame">
+    <div id="game-canvas">
+
+      <!-- ╔══════════════════════════════════════╗ -->
+      <!-- ║  SCREEN 1 · TITLE / SPLASH           ║ -->
+      <!-- ╚══════════════════════════════════════╝ -->
+      <div class="screen active" id="s-title">
+        <div class="bg-circles">
+          <span style="width:340px;height:340px;top:-100px;left:-100px;"></span>
+          <span style="width:220px;height:220px;bottom:-70px;right:-50px;"></span>
+        </div>
+        <div class="logo-wrap float">
+          <div class="logo">ENPA</div>
+          <div class="logo-sub">EDUCATIONAL NON-PROFIT ACCOUNT</div>
+        </div>
+        <div class="topic-badge">♟ Non-Profit Organization Accounting</div>
+        <h2>Belajar Akaun NPO secara interaktif</h2>
+        <button class="btn btn-gold pulse" onclick="goTo('s-intro')" style="font-size:14px;padding:12px 32px;">
+          ▶ &nbsp;TAP TO START
+        </button>
+        <div class="authors">Muhammad Zaki bin Ab. Muluk &nbsp;·&nbsp; Zariyah binti Abdullah</div>
+      </div>
+
+      <!-- ╔══════════════════════════════════════╗ -->
+      <!-- ║  SCREEN 2 · INTRODUCTION             ║ -->
+      <!-- ╚══════════════════════════════════════╝ -->
+      <div class="screen" id="s-intro">
+        <div class="nav-row" style="margin-bottom:10px;">
+          <button class="btn-back" onclick="goTo('s-title')">← Back</button>
+          <span class="screen-title" style="margin:0;">Introduction</span>
+          <div style="width:52px;"></div>
+        </div>
+        <div style="display:flex;gap:18px;flex:1;align-items:stretch;">
+          <div style="flex:0 0 120px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:12px;">
+            <div class="float" style="font-size:52px;">📚</div>
+            <div style="display:flex;flex-direction:column;gap:6px;width:100%;">
+              <div class="kp"><span class="kp-dot"></span>Receipts & Payments</div>
+              <div class="kp"><span class="kp-dot"></span>Income & Expenditure</div>
+              <div class="kp"><span class="kp-dot"></span>Balance Sheet</div>
+              <div class="kp"><span class="kp-dot"></span>Subscriptions</div>
+              <div class="kp"><span class="kp-dot"></span>Trading Account</div>
+            </div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;">
+            <div class="intro-scroll" style="flex:1;overflow-y:auto;padding-right:6px;scrollbar-width:thin;scrollbar-color:rgba(79,195,247,0.3) transparent;">
+              <p>A <strong style="color:#4fc3f7">Non-Profit Organization (NPO)</strong> account refers to the accounting system used by organizations that operate to provide services and benefits to the public or their members — not to earn profit.</p>
+              <p style="margin-top:8px;">These include charities, clubs, religious institutions, educational societies, and NGOs. Their main purpose is to record financial transactions accurately, ensure transparency, and show how funds such as donations, grants, and membership fees are utilized.</p>
+              <p style="margin-top:8px;">Unlike businesses, NPOs do not distribute profits to owners. Any surplus is reinvested into the organization to support its activities.</p>
+            </div>
+            <div style="margin-top:10px;text-align:right;">
+              <button class="btn btn-primary" onclick="goTo('s-menu')">Select Module &nbsp;→</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ╔══════════════════════════════════════╗ -->
+      <!-- ║  SCREEN 3 · MAIN MENU                ║ -->
+      <!-- ╚══════════════════════════════════════╝ -->
+      <div class="screen" id="s-menu">
+        <div class="nav-row" style="margin-bottom:6px;">
+          <button class="btn-back" onclick="goTo('s-intro')">← Back</button>
+          <span class="screen-title" style="margin:0;">Main Menu</span>
+          <div style="width:52px;"></div>
+        </div>
+        <div style="text-align:center;margin-bottom:18px;">
+          <h2 style="font-size:16px;">Select Your Option</h2>
+          <p style="font-size:11px;margin-top:4px;">Choose a module to begin learning</p>
+        </div>
+        <div class="menu-grid">
+          <div class="menu-card ebook" onclick="goTo('s-ebook')">
+            <div class="card-badge">A</div>
+            <div class="card-icon">📖</div>
+            <div class="card-label">eBook</div>
+          </div>
+          <div class="menu-card game" onclick="goTo('s-game')">
+            <div class="card-badge">B</div>
+            <div class="card-icon">🎮</div>
+            <div class="card-label">Game</div>
+          </div>
+          <div class="menu-card quiz" onclick="goTo('s-quiz')">
+            <div class="card-badge">C</div>
+            <div class="card-icon">❓</div>
+            <div class="card-label">Quiz</div>
+          </div>
+          <div class="menu-card exercise" onclick="goTo('s-exercise')">
+            <div class="card-badge">D</div>
+            <div class="card-icon">✏️</div>
+            <div class="card-label">Exercise</div>
+          </div>
+        </div>
+        <p style="font-size:10px;color:rgba(255,255,255,0.3);text-align:center;margin-top:14px;">📌 Chess Club · Year ended 31 August 2024</p>
+      </div>
+
+      <!-- ╔══════════════════════════════════════╗ -->
+      <!-- ║  SCREEN 4 · eBOOK                    ║ -->
+      <!-- ╚══════════════════════════════════════╝ -->
+      <div class="screen" id="s-ebook">
+        <div class="ebook-header">
+          <button class="btn-back" onclick="goTo('s-menu')">← Menu</button>
+          <span class="screen-title" style="margin:0;">📖 &nbsp;eBook</span>
+          <div style="width:52px;"></div>
+        </div>
+        <div style="flex:1;overflow-y:auto;padding-right:4px;scrollbar-width:thin;scrollbar-color:rgba(79,195,247,0.3) transparent;">
+          <div class="stmt-list">
+            <div class="stmt-item">
+              <div class="stmt-num">1</div>
+              <div class="stmt-info">
+                <h4>Receipts & Payments Account</h4>
+                <p>Records all cash received and paid during a specific period. It is a summary of the cash book — includes both capital and revenue items.</p>
+              </div>
+            </div>
+            <div class="stmt-item">
+              <div class="stmt-num">2</div>
+              <div class="stmt-info">
+                <h4>Subscriptions Account</h4>
+                <p>A ledger account to calculate the subscription income for the current year, adjusting for prepaid and accrued amounts.</p>
+              </div>
+            </div>
+            <div class="stmt-item">
+              <div class="stmt-num">3</div>
+              <div class="stmt-info">
+                <h4>Trading Account</h4>
+                <p>Prepared for clubs with trading activities (e.g. canteen, tuck shop). Shows gross profit from sales of goods.</p>
+              </div>
+            </div>
+            <div class="stmt-item">
+              <div class="stmt-num">4</div>
+              <div class="stmt-info">
+                <h4>Income &amp; Expenditure Account</h4>
+                <p>The NPO equivalent of Profit &amp; Loss. Shows all revenue income and expenses to determine Surplus or Deficit.</p>
+              </div>
+            </div>
+            <div class="stmt-item">
+              <div class="stmt-num">5</div>
+              <div class="stmt-info">
+                <h4>Statement of Financial Position</h4>
+                <p>Shows assets, liabilities and Accumulated Fund (NPO equivalent of Capital/Owner's Equity) at a point in time.</p>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:14px;">
+            <button class="btn btn-primary btn-sm" onclick="goTo('s-menu')">Back to Menu</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ╔══════════════════════════════════════╗ -->
+      <!-- ║  SCREEN 5 · GAME — MIX & MATCH       ║ -->
+      <!-- ╚══════════════════════════════════════╝ -->
+      <div class="screen" id="s-game">
+        <div class="game-header">
+          <button class="btn-back" onclick="resetGame();goTo('s-menu')">← Menu</button>
+          <span class="screen-title" style="margin:0;">🎮 &nbsp;Mix &amp; Match</span>
+          <div class="game-score">Score: <span id="score">0</span> / 5</div>
+        </div>
+        <p class="game-instruction">Tap a term on the left, then tap its matching value on the right.</p>
+        <div class="match-area">
+          <div class="match-col">
+            <div class="match-col-label">ACCOUNTING TERM</div>
+            <div class="match-card left-card" data-id="1" onclick="selectLeft(this)">Subscriptions</div>
+            <div class="match-card left-card" data-id="2" onclick="selectLeft(this)">Tournament Fees</div>
+            <div class="match-card left-card" data-id="3" onclick="selectLeft(this)">Profit from Drinks</div>
+            <div class="match-card left-card" data-id="4" onclick="selectLeft(this)">Surplus</div>
+            <div class="match-card left-card" data-id="5" onclick="selectLeft(this)">Accumulated Fund</div>
+          </div>
+          <div class="match-col" id="right-col">
+            <div class="match-col-label">VALUE (RM)</div>
+            <!-- Shuffled by JS on load -->
+          </div>
+        </div>
+        <div id="game-result">
+          <div style="font-size:48px;">🎉</div>
+          <h2>All Matched!</h2>
+          <p>You matched all 5 items correctly.</p>
+          <div style="display:flex;gap:10px;margin-top:4px;">
+            <button class="btn btn-ghost btn-sm" onclick="resetGame()">Try Again</button>
+            <button class="btn btn-primary btn-sm" onclick="resetGame();goTo('s-menu')">Back to Menu</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ╔══════════════════════════════════════╗ -->
+      <!-- ║  SCREEN 6 · QUIZ                     ║ -->
+      <!-- ╚══════════════════════════════════════╝ -->
+      <div class="screen" id="s-quiz">
+        <div class="quiz-header">
+          <button class="btn-back" onclick="resetQuiz();goTo('s-menu')">← Menu</button>
+          <span class="screen-title" style="margin:0;">❓ &nbsp;Quiz</span>
+          <span class="quiz-progress">Q <span id="q-current">1</span> / <span id="q-total">3</span></span>
+        </div>
+        <div id="quiz-area"></div>
+        <div id="quiz-feedback"></div>
+        <div style="margin-top:10px;text-align:right;">
+          <button class="btn btn-primary btn-sm" id="btn-next-q" style="display:none;" onclick="nextQuestion()">Next →</button>
+        </div>
+      </div>
+
+      <!-- ╔══════════════════════════════════════╗ -->
+      <!-- ║  SCREEN 7 · EXERCISE                 ║ -->
+      <!-- ╚══════════════════════════════════════╝ -->
+      <div class="screen" id="s-exercise">
+        <div class="ex-header">
+          <button class="btn-back" onclick="goTo('s-menu')">← Menu</button>
+          <span class="screen-title" style="margin:0;">✏️ &nbsp;Exercise</span>
+          <button class="btn btn-sm" style="background:rgba(206,147,216,0.2);color:#ce93d8;border:1px solid rgba(206,147,216,0.3);border-radius:20px;cursor:pointer;font-size:10px;padding:5px 10px;" onclick="toggleAnswer()">Show Answer</button>
+        </div>
+        <div class="ex-body">
+          <div class="ex-question" style="overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(206,147,216,0.3) transparent;padding-right:6px;">
+            <div class="ex-card">
+              <h4>Chess Club — Year ended 31 August 2024</h4>
+              <p>The following is the <strong style="color:#fff">Receipt and Payment Account</strong> of Chess Club together with additional information.</p>
+            </div>
+            <div class="ex-card">
+              <h4>Additional Information</h4>
+              <ul>
+                <li>Entrance subscriptions treated as capital receipt</li>
+                <li>Opening stock of drinks: RM 1,528</li>
+                <li>Closing stock of drinks: RM 2,560</li>
+                <li>Accrued subscriptions (opening): RM 790</li>
+                <li>Prepaid subscriptions (opening): RM 480</li>
+                <li>Accrued lockers rent: RM 690</li>
+                <li>Accumulated fund (opening): RM 34,500</li>
+              </ul>
+            </div>
+            <div class="ex-card">
+              <h4>Required: Prepare the following</h4>
+              <ul>
+                <li>(a) Subscriptions Account</li>
+                <li>(b) Trading Account — 31 Aug 2024</li>
+                <li>(c) Income &amp; Expenditure Account — 31 Aug 2024</li>
+                <li>(d) Statement of Financial Position — 31 Aug 2024</li>
+              </ul>
+            </div>
+          </div>
+          <div class="ex-answer" id="answer-hidden" style="overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(206,147,216,0.3) transparent;padding-right:4px;">
+            <div class="answer-panel">
+              <h4>(b) Trading Account</h4>
+              <table class="t-account">
+                <tr><th>Item</th><th style="text-align:right">RM</th></tr>
+                <tr><td>Sales</td><td style="text-align:right">3,490</td></tr>
+                <tr><td>Opening Stock</td><td style="text-align:right">1,528</td></tr>
+                <tr><td>+ Purchases</td><td style="text-align:right">3,490</td></tr>
+                <tr><td>− Closing Stock</td><td style="text-align:right">(2,560)</td></tr>
+                <tr><td>Cost of Sales</td><td style="text-align:right">2,458</td></tr>
+                <tr class="total"><td>Gross Profit</td><td style="text-align:right">1,962</td></tr>
+              </table>
+              <h4 style="margin-top:8px;">(c) I&amp;E Account — Surplus</h4>
+              <table class="t-account">
+                <tr><th>Income</th><th style="text-align:right">RM</th></tr>
+                <tr><td>Subscriptions</td><td style="text-align:right">12,120</td></tr>
+                <tr><td>Tournament fees</td><td style="text-align:right">1,300</td></tr>
+                <tr class="total"><td>Profit from drinks</td><td style="text-align:right">1,962</td></tr>
+                <tr><th>Expenses</th><th></th></tr>
+                <tr><td>Maintenance</td><td style="text-align:right">380</td></tr>
+                <tr><td>Utility</td><td style="text-align:right">2,000</td></tr>
+                <tr><td>Worker salary</td><td style="text-align:right">1,460</td></tr>
+                <tr><td>Rental — hall</td><td style="text-align:right">860</td></tr>
+                <tr><td>Lockers rent</td><td style="text-align:right">690</td></tr>
+                <tr><td>Trophies &amp; prizes</td><td style="text-align:right">145</td></tr>
+                <tr class="total"><td><strong>Surplus</strong></td><td style="text-align:right"><strong>9,917</strong></td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /game-canvas -->
+  </div><!-- /phone-frame -->
+</div><!-- /frame-wrap -->
+
+<!-- ─── Flow Map ─────────────────────────────────────────────── -->
+<div id="flow-map">
+  <span class="flow-node" onclick="goTo('s-title')" id="fn-s-title">Title</span>
+  <span class="flow-arrow">›</span>
+  <span class="flow-node" onclick="goTo('s-intro')" id="fn-s-intro">Intro</span>
+  <span class="flow-arrow">›</span>
+  <span class="flow-node" onclick="goTo('s-menu')" id="fn-s-menu">Menu</span>
+  <span class="flow-arrow">›</span>
+  <span class="flow-node" onclick="goTo('s-ebook')" id="fn-s-ebook">eBook</span>
+  <span class="flow-arrow">|</span>
+  <span class="flow-node" onclick="goTo('s-game')" id="fn-s-game">Game</span>
+  <span class="flow-arrow">|</span>
+  <span class="flow-node" onclick="goTo('s-quiz')" id="fn-s-quiz">Quiz</span>
+  <span class="flow-arrow">|</span>
+  <span class="flow-node" onclick="goTo('s-exercise')" id="fn-s-exercise">Exercise</span>
+</div>
+
+<script>
+  /* ── Screen navigation ───────────────────────────────────────── */
+  let currentScreen = 's-title';
+
+  function goTo(id) {
+    const cur = document.getElementById(currentScreen);
+    const next = document.getElementById(id);
+    if (!next || id === currentScreen) return;
+
+    cur.classList.add('exit');
+    setTimeout(() => { cur.classList.remove('active', 'exit'); }, 350);
+
+    next.style.transform = 'translateX(40px)';
+    next.classList.add('active');
+    requestAnimationFrame(() => { next.style.transform = ''; });
+
+    currentScreen = id;
+    updateFlowMap(id);
+  }
+
+  function updateFlowMap(id) {
+    document.querySelectorAll('.flow-node').forEach(n => n.classList.remove('active-node'));
+    const node = document.getElementById('fn-' + id);
+    if (node) node.classList.add('active-node');
+  }
+
+  /* ── Mix & Match Game ────────────────────────────────────────── */
+  const pairs = [
+    { id: 1, term: 'Subscriptions',     value: 'RM 12,120' },
+    { id: 2, term: 'Tournament Fees',   value: 'RM 1,300'  },
+    { id: 3, term: 'Profit from Drinks',value: 'RM 1,962'  },
+    { id: 4, term: 'Surplus',           value: 'RM 9,917'  },
+    { id: 5, term: 'Accumulated Fund',  value: 'RM 34,500' },
+  ];
+
+  let selectedLeft = null;
+  let matchedCount = 0;
+
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function buildRightCol() {
+    const col = document.getElementById('right-col');
+    col.innerHTML = '<div class="match-col-label">VALUE (RM)</div>';
+    shuffle(pairs).forEach(p => {
+      const d = document.createElement('div');
+      d.className = 'match-card right-card';
+      d.dataset.id = p.id;
+      d.textContent = p.value;
+      d.onclick = function() { selectRight(this); };
+      col.appendChild(d);
+    });
+  }
+
+  function selectLeft(el) {
+    if (el.classList.contains('matched')) return;
+    document.querySelectorAll('.left-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedLeft = el;
+  }
+
+  function selectRight(el) {
+    if (!selectedLeft || el.classList.contains('matched')) return;
+    if (selectedLeft.dataset.id === el.dataset.id) {
+      selectedLeft.classList.remove('selected');
+      selectedLeft.classList.add('matched');
+      el.classList.add('matched');
+      selectedLeft.onclick = null;
+      el.onclick = null;
+      selectedLeft = null;
+      matchedCount++;
+      document.getElementById('score').textContent = matchedCount;
+      if (matchedCount === pairs.length) {
+        setTimeout(() => { document.getElementById('game-result').classList.add('show'); }, 400);
+      }
+    } else {
+      el.classList.add('wrong');
+      selectedLeft.classList.add('wrong');
+      const sl = selectedLeft;
+      setTimeout(() => { el.classList.remove('wrong'); sl.classList.remove('wrong', 'selected'); }, 500);
+      selectedLeft = null;
+    }
+  }
+
+  function resetGame() {
+    matchedCount = 0;
+    selectedLeft = null;
+    document.getElementById('score').textContent = '0';
+    document.getElementById('game-result').classList.remove('show');
+    document.querySelectorAll('.left-card').forEach(c => {
+      c.classList.remove('matched', 'selected', 'wrong');
+      c.onclick = function() { selectLeft(this); };
+    });
+    buildRightCol();
+  }
+
+  /* ── Quiz ────────────────────────────────────────────────────── */
+  const questions = [
+    {
+      q: 'What is the SURPLUS for Chess Club for the year ended 31 August 2024?',
+      opts: ['RM 8,917', 'RM 9,917', 'RM 10,917', 'RM 11,917'],
+      correct: 1,
+      explain: 'Correct! Surplus = Total income (RM 15,382) − Total expenses (RM 5,535) = RM 9,917'
+    },
+    {
+      q: 'Which financial statement determines whether an NPO has a surplus or deficit?',
+      opts: ['Receipts & Payments Account', 'Trading Account', 'Income & Expenditure Account', 'Statement of Financial Position'],
+      correct: 2,
+      explain: 'Correct! The Income & Expenditure Account is the NPO equivalent of a P&L statement.'
+    },
+    {
+      q: 'In the Chess Club, entrance subscriptions are treated as:',
+      opts: ['Revenue receipt', 'Capital receipt', 'Capital expenditure', 'Revenue expenditure'],
+      correct: 1,
+      explain: 'Correct! Entrance fees are one-time payments and treated as capital receipts — added to Accumulated Fund.'
+    }
+  ];
+
+  let currentQ = 0;
+
+  function renderQuestion() {
+    const q = questions[currentQ];
+    document.getElementById('q-current').textContent = currentQ + 1;
+    document.getElementById('q-total').textContent = questions.length;
+    const fb = document.getElementById('quiz-feedback');
+    fb.className = ''; fb.style.display = 'none'; fb.textContent = '';
+    document.getElementById('btn-next-q').style.display = 'none';
+
+    const area = document.getElementById('quiz-area');
+    area.innerHTML = `
+      <div class="question-box"><p>${q.q}</p></div>
+      <div class="quiz-options">
+        ${q.opts.map((o, i) => `
+          <div class="quiz-opt" data-idx="${i}" onclick="answerQ(${i})">
+            <div class="opt-letter">${['A','B','C','D'][i]}</div>
+            <span>${o}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  function answerQ(idx) {
+    const q = questions[currentQ];
+    const opts = document.querySelectorAll('.quiz-opt');
+    opts.forEach(o => o.classList.add('disabled'));
+    const fb = document.getElementById('quiz-feedback');
+    if (idx === q.correct) {
+      opts[idx].classList.add('correct');
+      fb.className = 'correct-fb'; fb.textContent = '✓ ' + q.explain;
+    } else {
+      opts[idx].classList.add('wrong');
+      opts[q.correct].classList.add('correct');
+      fb.className = 'wrong-fb'; fb.textContent = '✗ Incorrect. ' + q.explain;
+    }
+    const nextBtn = document.getElementById('btn-next-q');
+    nextBtn.style.display = 'inline-flex';
+    nextBtn.textContent = currentQ < questions.length - 1 ? 'Next →' : 'Finish ✓';
+  }
+
+  function nextQuestion() {
+    if (currentQ < questions.length - 1) {
+      currentQ++;
+      renderQuestion();
+    } else {
+      goTo('s-menu');
+    }
+  }
+
+  function resetQuiz() { currentQ = 0; }
+
+  /* ── Exercise answer toggle ──────────────────────────────────── */
+  function toggleAnswer() {
+    const el = document.getElementById('answer-hidden');
+    el.classList.toggle('visible');
+  }
+
+  /* ── Init ────────────────────────────────────────────────────── */
+  buildRightCol();
+  renderQuestion();
+  updateFlowMap('s-title');
+</script>
+</body>
+</html>
