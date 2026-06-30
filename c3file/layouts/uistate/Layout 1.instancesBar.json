@@ -1,0 +1,40 @@
+{
+	"instanceFolderJson": {
+		"items": [],
+		"subfolders": []
+	},
+	"instanceFolderUIStateJson": {
+		"expanded": true,
+		"subfolders": [],
+		"misc": {
+			"global": true,
+			"layout": []
+		}
+	},
+	"instanceFolderItemsJson": [
+		{
+			"sid": 157436450912618,
+			"expanded": true
+		},
+		{
+			"sid": 404848056970091,
+			"expanded": true
+		},
+		{
+			"sid": 683519852542872,
+			"expanded": true
+		},
+		{
+			"sid": 475483358916944,
+			"expanded": true
+		},
+		{
+			"sid": 579967980281448,
+			"expanded": true
+		},
+		{
+			"sid": 519017130421071,
+			"expanded": true
+		}
+	]
+}

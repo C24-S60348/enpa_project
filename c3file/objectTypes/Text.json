@@ -1,0 +1,18 @@
+{
+	"name": "Text",
+	"plugin-id": "Text",
+	"sid": 149391501960874,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "item",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 247615869631147
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

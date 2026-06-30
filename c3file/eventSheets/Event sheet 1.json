@@ -1,0 +1,226 @@
+{
+	"name": "Event sheet 1",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 932414782361769
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "clearText",
+					"sid": 252416182859195,
+					"parameters": [
+						"\"1\""
+					]
+				},
+				{
+					"callFunction": "clearText",
+					"sid": 340383625317242,
+					"parameters": [
+						"\"2\""
+					]
+				},
+				{
+					"callFunction": "clearText",
+					"sid": 720551157769947,
+					"parameters": [
+						"\"3\""
+					]
+				},
+				{
+					"callFunction": "clearText",
+					"sid": 898228167350643,
+					"parameters": [
+						"\"20\""
+					]
+				},
+				{
+					"callFunction": "clearText",
+					"sid": 679359351600724,
+					"parameters": [
+						"\"21\""
+					]
+				},
+				{
+					"callFunction": "setText",
+					"sid": 463537425187293,
+					"parameters": [
+						"\"1\"",
+						"\"eNPA\""
+					]
+				},
+				{
+					"callFunction": "setText",
+					"sid": 830035214837830,
+					"parameters": [
+						"\"20\"",
+						"\"DO YOU KNOW ABOUT \""
+					]
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 800614128432401,
+					"parameters": {
+						"seconds": "1.0",
+						"use-timescale": true
+					}
+				},
+				{
+					"callFunction": "setText",
+					"sid": 705385077150053,
+					"parameters": [
+						"\"2\"",
+						"\"NON-PROFIT ORGANIZATION ACCOUNT\""
+					]
+				},
+				{
+					"callFunction": "setText",
+					"sid": 447342880045922,
+					"parameters": [
+						"\"21\"",
+						"\"NON-PROFIT ACCOUNT?\""
+					]
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 112377588182510,
+					"parameters": {
+						"seconds": "1.0",
+						"use-timescale": true
+					}
+				},
+				{
+					"callFunction": "setText",
+					"sid": 595116356045393,
+					"parameters": [
+						"\"3\"",
+						"\"MUHAMMAD ZAKI BIN AB. MULUK\nZARIYAH BINTI ABDULLAH\""
+					]
+				}
+			],
+			"sid": 737117728597521
+		},
+		{
+			"functionName": "setText",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "item",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 387513047351569
+				},
+				{
+					"name": "text",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 780983366379302
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Text",
+					"sid": 185572743641494,
+					"parameters": {
+						"instance-variable": "item",
+						"comparison": 0,
+						"value": "item"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "typewriter-text",
+					"objectClass": "Text",
+					"sid": 194517884155281,
+					"parameters": {
+						"text": "text",
+						"duration": "1"
+					}
+				}
+			],
+			"sid": 832064665918857
+		},
+		{
+			"functionName": "clearText",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "item",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 801143510264019
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Text",
+					"sid": 562967343854488,
+					"parameters": {
+						"instance-variable": "item",
+						"comparison": 0,
+						"value": "item"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "Text",
+					"sid": 779454327157933,
+					"parameters": {
+						"text": "\"\""
+					}
+				}
+			],
+			"sid": 236059989769652
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 292879606849635,
+					"parameters": {
+						"object": "nextbutton"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout-by-name",
+					"objectClass": "System",
+					"sid": 703273705570758,
+					"parameters": {
+						"layout": "nextbutton.goto"
+					}
+				}
+			],
+			"sid": 355276850017533
+		}
+	],
+	"sid": 850413981257735
+}
