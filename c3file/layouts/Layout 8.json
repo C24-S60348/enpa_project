@@ -91,76 +91,6 @@
 					}
 				},
 				{
-					"type": "soalan1",
-					"properties": {
-						"initially-visible": true,
-						"initial-animation": "Default",
-						"initial-frame": 0,
-						"enable-collisions": true,
-						"live-preview": false
-					},
-					"uid": 81,
-					"sid": 717814170588434,
-					"tags": "",
-					"instanceVariables": {
-						"item": "bye"
-					},
-					"behaviors": {},
-					"showing": true,
-					"locked": false,
-					"world": {
-						"x": 332,
-						"y": 141,
-						"width": 510.43242043926864,
-						"height": 253.81648694603496,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"z": 0,
-						"angle": 0
-					}
-				},
-				{
-					"type": "soalan2",
-					"properties": {
-						"initially-visible": true,
-						"initial-animation": "Default",
-						"initial-frame": 0,
-						"enable-collisions": true,
-						"live-preview": false
-					},
-					"uid": 82,
-					"sid": 645490047128652,
-					"tags": "",
-					"instanceVariables": {
-						"item": "bye"
-					},
-					"behaviors": {},
-					"showing": true,
-					"locked": false,
-					"world": {
-						"x": 1599,
-						"y": 133,
-						"width": 344.0517691366019,
-						"height": 233.53817056545097,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"z": 0,
-						"angle": 0
-					}
-				},
-				{
 					"type": "nextbutton",
 					"properties": {
 						"initially-visible": true,
@@ -820,7 +750,77 @@
 						"x": 924,
 						"y": 486,
 						"width": 1479.0335982037002,
-						"height": 452.41027709760243,
+						"height": 452.4102770976024,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "soalan3",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Default",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 81,
+					"sid": 906183193411684,
+					"tags": "",
+					"instanceVariables": {
+						"item": "bye"
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 318,
+						"y": 132,
+						"width": 462.4121625514497,
+						"height": 229.938040610593,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "soalan3",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Default",
+						"initial-frame": 1,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 82,
+					"sid": 547552858550230,
+					"tags": "",
+					"instanceVariables": {
+						"item": "bye"
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 1599,
+						"y": 129,
+						"width": 373.4300115904439,
+						"height": 229.3829687283166,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [

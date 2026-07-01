@@ -159,11 +159,11 @@
 				},
 				{
 					"callFunction": "setText",
-					"sid": 338281084862661,
+					"sid": 274662676451042,
 					"parameters": [
 						"\"33\"",
 						"\"                                                                                                  refers to the accounting system used by organizations that operate to provide services and benefits to the public or their members rather than to earn profit. These organizations include charities, clubs, religious institutions, educational societies, and non-governmental organizations (NGOs).\n\nThe main purpose of this accounting system is to record financial transactions accurately, ensure transparency and accountability, and show how funds such as donations, grants, sponsorships, and membership fees are utilized. Unlike business organizations, non-profit organizations do not distribute profits to owners or shareholders. Instead, any surplus earned is reinvested into the organization to support its activities and objectives.\n\nNon-profit organizations usually prepare several financial statements, including the Receipts and Payments Account, Income and Expenditure Account, and Balance Sheet or Statement of Financial Position. The Receipts and Payments Account records all cash received and paid during a specific period, while the Income and Expenditure Account determines whether the organization has a surplus or deficit. The Balance Sheet shows the organization’s assets, liabilities, and accumulated funds.\n\nProper accounting practices are important for non-profit organizations to maintain public trust, ensure responsible management of funds, and support effective decision-making for future programs and activities.\"",
-						"10"
+						"15"
 					]
 				},
 				{
@@ -315,12 +315,12 @@
 					],
 					"actions": [
 						{
-							"id": "go-to-url",
+							"id": "open-url-in-new-window",
 							"objectClass": "Browser",
-							"sid": 179625839461546,
+							"sid": 153650809261182,
 							"parameters": {
 								"url": "nextbutton.link",
-								"target": "self"
+								"tag": "\"NewWindow\""
 							}
 						}
 					],
@@ -470,11 +470,11 @@
 			],
 			"actions": [
 				{
-					"id": "set-blend-mode",
+					"id": "set-scale",
 					"objectClass": "nextbutton",
-					"sid": 664688442794119,
+					"sid": 902203324943384,
 					"parameters": {
-						"blend-mode": "additive"
+						"scale": "1.1"
 					}
 				}
 			],
@@ -507,8 +507,17 @@
 					"id": "set-blend-mode",
 					"objectClass": "nextbutton",
 					"sid": 218889525828048,
+					"disabled": true,
 					"parameters": {
 						"blend-mode": "normal"
+					}
+				},
+				{
+					"id": "set-scale",
+					"objectClass": "nextbutton",
+					"sid": 558295033754312,
+					"parameters": {
+						"scale": "1"
 					}
 				}
 			],
