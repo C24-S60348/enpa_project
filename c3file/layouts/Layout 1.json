@@ -52,12 +52,18 @@
 					"sid": 404848056970091,
 					"tags": "",
 					"instanceVariables": {},
-					"behaviors": {},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 944,
-						"y": 309,
+						"x": 990,
+						"y": 318,
 						"width": 757.7807552144044,
 						"height": 521.05692417884,
 						"originX": 0.5,
@@ -238,7 +244,8 @@
 					"sid": 519017130421071,
 					"tags": "",
 					"instanceVariables": {
-						"goto": "Layout 2"
+						"goto": "Layout 2",
+						"link": ""
 					},
 					"behaviors": {},
 					"showing": true,

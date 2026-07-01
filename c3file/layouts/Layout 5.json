@@ -91,7 +91,7 @@
 					}
 				},
 				{
-					"type": "Screenshot20260628At111116AM",
+					"type": "soalan1",
 					"properties": {
 						"initially-visible": true,
 						"initial-animation": "Default",
@@ -102,7 +102,9 @@
 					"uid": 22,
 					"sid": 463740219767565,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"item": ""
+					},
 					"behaviors": {},
 					"showing": true,
 					"locked": false,
@@ -124,7 +126,7 @@
 					}
 				},
 				{
-					"type": "Screenshot20260628At111132AM",
+					"type": "soalan2",
 					"properties": {
 						"initially-visible": true,
 						"initial-animation": "Default",
@@ -135,7 +137,9 @@
 					"uid": 34,
 					"sid": 581803996599637,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"item": ""
+					},
 					"behaviors": {},
 					"showing": true,
 					"locked": false,
@@ -169,7 +173,13 @@
 					"sid": 937375687656437,
 					"tags": "",
 					"instanceVariables": {},
-					"behaviors": {},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
 					"showing": true,
 					"locked": false,
 					"world": {
@@ -202,7 +212,8 @@
 					"sid": 990589602774039,
 					"tags": "",
 					"instanceVariables": {
-						"goto": "Layout 6"
+						"goto": "Layout 6",
+						"link": ""
 					},
 					"behaviors": {},
 					"showing": true,

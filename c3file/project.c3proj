@@ -8,6 +8,13 @@
 	"usedAddons": [
 		{
 			"type": "plugin",
+			"id": "Browser",
+			"name": "Browser",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Mouse",
 			"name": "Mouse",
 			"author": "Scirra",
@@ -33,6 +40,20 @@
 			"name": "Touch",
 			"author": "Scirra",
 			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "DragnDrop",
+			"name": "Drag & Drop",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Tween",
+			"name": "Tween",
+			"author": "Scirra",
+			"bundled": false
 		}
 	],
 	"uniqueId": "rtnq1hua0l6",
@@ -53,12 +74,16 @@
 			"Touch",
 			"Mouse",
 			"Screenshot20260628At111021AM",
-			"Screenshot20260628At111116AM",
-			"Screenshot20260628At111132AM",
+			"soalan1",
+			"soalan2",
 			"Screenshot20260630At42416PM",
-			"Screenshot20260630At42444PM",
+			"pilihanjawapan",
 			"Screenshot20260630At42856PM",
-			"Screenshot20260630At42933PM"
+			"Screenshot20260630At42933PM",
+			"Screenshot20260630At83708PM",
+			"Browser",
+			"hitam",
+			"soalan3"
 		],
 		"subfolders": []
 	},
@@ -77,7 +102,8 @@
 			"Layout 4",
 			"Layout 5",
 			"Layout 6",
-			"Layout 7"
+			"Layout 7",
+			"Layout 8"
 		],
 		"subfolders": []
 	},

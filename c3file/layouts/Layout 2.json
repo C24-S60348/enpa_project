@@ -187,7 +187,8 @@
 					"sid": 115732723986311,
 					"tags": "",
 					"instanceVariables": {
-						"goto": "Layout 3"
+						"goto": "Layout 3",
+						"link": ""
 					},
 					"behaviors": {},
 					"showing": true,

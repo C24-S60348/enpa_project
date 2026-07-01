@@ -1,10 +1,18 @@
 {
-	"name": "Screenshot20260628At111132AM",
+	"name": "soalan3",
 	"plugin-id": "Sprite",
-	"sid": 894604595026887,
+	"sid": 137836385889889,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
-	"instanceVariables": [],
+	"instanceVariables": [
+		{
+			"name": "item",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 181179455644932
+		}
+	],
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"animations": {
@@ -12,7 +20,21 @@
 			{
 				"frames": [
 					{
-						"width": 990,
+						"width": 1094,
+						"height": 544,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 5930918,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 1094,
 						"height": 672,
 						"originX": 0.5,
 						"originY": 0.5,
@@ -20,19 +42,19 @@
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 1510395,
+						"imageSpriteId": 2024900,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
 					}
 				],
-				"sid": 378767755825053,
+				"sid": 576218646631811,
 				"name": "Default",
 				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,
 				"repeatTo": 0,
-				"speed": 5
+				"speed": 0
 			}
 		],
 		"subfolders": []

@@ -1,38 +1,32 @@
 {
-	"name": "Screenshot20260620At112638AM",
+	"name": "Screenshot20260630At83708PM",
 	"plugin-id": "Sprite",
-	"sid": 242856703741100,
+	"sid": 138782258981529,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [],
-	"behaviorTypes": [
-		{
-			"behaviorId": "Tween",
-			"name": "Tween",
-			"sid": 314618692632190
-		}
-	],
+	"behaviorTypes": [],
 	"effectTypes": [],
 	"animations": {
 		"items": [
 			{
 				"frames": [
 					{
-						"width": 1146,
-						"height": 788,
+						"width": 1870,
+						"height": 572,
 						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 152023,
+						"imageSpriteId": 1762907,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
 					}
 				],
-				"sid": 453940974530164,
+				"sid": 100045727962033,
 				"name": "Default",
 				"isLooping": false,
 				"isPingPong": false,

@@ -11,6 +11,13 @@
 			"desc": "",
 			"show": true,
 			"sid": 190275636893466
+		},
+		{
+			"name": "link",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 245061632633969
 		}
 	],
 	"behaviorTypes": [],

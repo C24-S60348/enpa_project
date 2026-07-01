@@ -12,6 +12,65 @@
 			],
 			"actions": [
 				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 640337807788145,
+					"parameters": {
+						"layer": "\"q1\"",
+						"visibility": "invisible"
+					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "Screenshot20260620At112638AM",
+					"sid": 258323779105922,
+					"parameters": {
+						"opacity": "0"
+					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "Screenshot20260628At111021AM",
+					"sid": 485708271495355,
+					"parameters": {
+						"opacity": "0"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "Screenshot20260620At112638AM",
+					"sid": 695175793921027,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "offsetOpacity",
+						"end-value": "100",
+						"time": "2",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "Screenshot20260628At111021AM",
+					"sid": 650599839404006,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "offsetOpacity",
+						"end-value": "100",
+						"time": "2",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
 					"callFunction": "clearText",
 					"sid": 252416182859195,
 					"parameters": [
@@ -47,11 +106,19 @@
 					]
 				},
 				{
+					"callFunction": "clearText",
+					"sid": 538836306973924,
+					"parameters": [
+						"\"33\""
+					]
+				},
+				{
 					"callFunction": "setText",
 					"sid": 463537425187293,
 					"parameters": [
 						"\"1\"",
-						"\"eNPA\""
+						"\"eNPA\"",
+						"1"
 					]
 				},
 				{
@@ -59,7 +126,8 @@
 					"sid": 830035214837830,
 					"parameters": [
 						"\"20\"",
-						"\"DO YOU KNOW ABOUT \""
+						"\"DO YOU KNOW ABOUT \"",
+						"1"
 					]
 				},
 				{
@@ -76,7 +144,8 @@
 					"sid": 705385077150053,
 					"parameters": [
 						"\"2\"",
-						"\"NON-PROFIT ORGANIZATION ACCOUNT\""
+						"\"NON-PROFIT ORGANIZATION ACCOUNT\"",
+						"1"
 					]
 				},
 				{
@@ -84,7 +153,17 @@
 					"sid": 447342880045922,
 					"parameters": [
 						"\"21\"",
-						"\"NON-PROFIT ACCOUNT?\""
+						"\"NON-PROFIT ACCOUNT?\"",
+						"1"
+					]
+				},
+				{
+					"callFunction": "setText",
+					"sid": 338281084862661,
+					"parameters": [
+						"\"33\"",
+						"\"                                                                                                  refers to the accounting system used by organizations that operate to provide services and benefits to the public or their members rather than to earn profit. These organizations include charities, clubs, religious institutions, educational societies, and non-governmental organizations (NGOs).\n\nThe main purpose of this accounting system is to record financial transactions accurately, ensure transparency and accountability, and show how funds such as donations, grants, sponsorships, and membership fees are utilized. Unlike business organizations, non-profit organizations do not distribute profits to owners or shareholders. Instead, any surplus earned is reinvested into the organization to support its activities and objectives.\n\nNon-profit organizations usually prepare several financial statements, including the Receipts and Payments Account, Income and Expenditure Account, and Balance Sheet or Statement of Financial Position. The Receipts and Payments Account records all cash received and paid during a specific period, while the Income and Expenditure Account determines whether the organization has a surplus or deficit. The Balance Sheet shows the organization’s assets, liabilities, and accumulated funds.\n\nProper accounting practices are important for non-profit organizations to maintain public trust, ensure responsible management of funds, and support effective decision-making for future programs and activities.\"",
+						"10"
 					]
 				},
 				{
@@ -101,7 +180,8 @@
 					"sid": 595116356045393,
 					"parameters": [
 						"\"3\"",
-						"\"MUHAMMAD ZAKI BIN AB. MULUK\nZARIYAH BINTI ABDULLAH\""
+						"\"MUHAMMAD ZAKI BIN AB. MULUK\nZARIYAH BINTI ABDULLAH\"",
+						"1"
 					]
 				}
 			],
@@ -128,6 +208,13 @@
 					"initialValue": "",
 					"comment": "",
 					"sid": 780983366379302
+				},
+				{
+					"name": "seconds",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"sid": 554858657286044
 				}
 			],
 			"eventType": "function-block",
@@ -147,10 +234,10 @@
 				{
 					"id": "typewriter-text",
 					"objectClass": "Text",
-					"sid": 194517884155281,
+					"sid": 989491513598587,
 					"parameters": {
 						"text": "text",
-						"duration": "1"
+						"duration": "seconds"
 					}
 				}
 			],
@@ -203,23 +290,351 @@
 				{
 					"id": "on-tap-object",
 					"objectClass": "Touch",
-					"sid": 292879606849635,
+					"sid": 149923917622189,
 					"parameters": {
 						"object": "nextbutton"
 					}
 				}
 			],
+			"actions": [],
+			"sid": 913948688791881,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "nextbutton",
+							"sid": 918141571891223,
+							"parameters": {
+								"instance-variable": "goto",
+								"comparison": 0,
+								"value": "\"link\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "go-to-url",
+							"objectClass": "Browser",
+							"sid": 179625839461546,
+							"parameters": {
+								"url": "nextbutton.link",
+								"target": "self"
+							}
+						}
+					],
+					"sid": 793348183249387
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 914996649453958
+						}
+					],
+					"actions": [
+						{
+							"id": "go-to-layout-by-name",
+							"objectClass": "System",
+							"sid": 369407048555463,
+							"parameters": {
+								"layout": "nextbutton.goto"
+							}
+						}
+					],
+					"sid": 157123904800461
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-drag-start",
+					"objectClass": "pilihanjawapan",
+					"sid": 600311775954564,
+					"behaviorType": "DragDrop"
+				}
+			],
 			"actions": [
 				{
-					"id": "go-to-layout-by-name",
+					"id": "move-to-top",
+					"objectClass": "pilihanjawapan",
+					"sid": 945334945506249
+				}
+			],
+			"sid": 139316802958622
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
 					"objectClass": "System",
-					"sid": 703273705570758,
+					"sid": 711589684871412
+				}
+			],
+			"actions": [],
+			"sid": 954519546471825,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "nextbutton",
+							"sid": 348554713753791,
+							"parameters": {
+								"instance-variable": "goto",
+								"comparison": 0,
+								"value": "\"Layout 2\""
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "nextbutton",
+							"sid": 193307409046833,
+							"parameters": {
+								"instance-variable": "goto",
+								"comparison": 0,
+								"value": "\"Layout 3\""
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "nextbutton",
+							"sid": 110959486503966,
+							"parameters": {
+								"instance-variable": "goto",
+								"comparison": 0,
+								"value": "\"Layout 6\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "nextbutton",
+							"sid": 751722240616965,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 736374269956352,
+							"parameters": {
+								"seconds": "4",
+								"use-timescale": true
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "nextbutton",
+							"sid": 597065812847803,
+							"parameters": {
+								"visibility": "visible"
+							}
+						}
+					],
+					"sid": 798069349372584,
+					"isOrBlock": true
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-touched-object",
+					"objectClass": "Touch",
+					"sid": 526516593472700,
 					"parameters": {
-						"layout": "nextbutton.goto"
+						"object": "nextbutton",
+						"type": "start"
+					}
+				},
+				{
+					"id": "compare-animation-frame",
+					"objectClass": "nextbutton",
+					"sid": 285734079584738,
+					"parameters": {
+						"comparison": 1,
+						"number": "0"
 					}
 				}
 			],
-			"sid": 355276850017533
+			"actions": [
+				{
+					"id": "set-blend-mode",
+					"objectClass": "nextbutton",
+					"sid": 664688442794119,
+					"parameters": {
+						"blend-mode": "additive"
+					}
+				}
+			],
+			"sid": 789155489110460
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-touching-object",
+					"objectClass": "Touch",
+					"sid": 894592465004100,
+					"parameters": {
+						"object": "nextbutton"
+					},
+					"isInverted": true
+				},
+				{
+					"id": "compare-animation-frame",
+					"objectClass": "nextbutton",
+					"sid": 811294686465837,
+					"parameters": {
+						"comparison": 1,
+						"number": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-blend-mode",
+					"objectClass": "nextbutton",
+					"sid": 218889525828048,
+					"parameters": {
+						"blend-mode": "normal"
+					}
+				}
+			],
+			"sid": 729186807877634
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 159975899734351,
+					"parameters": {
+						"object": "soalan3"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "soalan3",
+					"sid": 732083156175537,
+					"parameters": {
+						"instance-variable": "item",
+						"comparison": 0,
+						"value": "\"bye\""
+					}
+				},
+				{
+					"id": "layer-is-visible",
+					"objectClass": "System",
+					"sid": 138648472638680,
+					"parameters": {
+						"layer": "\"q1\""
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 214111974715483,
+					"parameters": {
+						"layer": "\"q1\"",
+						"visibility": "visible"
+					}
+				},
+				{
+					"callFunction": "setSoalanFrame",
+					"sid": 799411977712038,
+					"parameters": [
+						"soalan3.AnimationFrame"
+					]
+				}
+			],
+			"sid": 675489531562757
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-any-touch-start",
+					"objectClass": "Touch",
+					"sid": 628115747480375
+				},
+				{
+					"id": "layer-is-visible",
+					"objectClass": "System",
+					"sid": 541962133726653,
+					"parameters": {
+						"layer": "\"q1\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 910930427664460,
+					"parameters": {
+						"layer": "\"q1\"",
+						"visibility": "invisible"
+					}
+				}
+			],
+			"sid": 303581780628952
+		},
+		{
+			"functionName": "setSoalanFrame",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "frame",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 305785191174338
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "soalan3",
+					"sid": 752394153201016,
+					"parameters": {
+						"instance-variable": "item",
+						"comparison": 0,
+						"value": "\"byebye\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation-frame",
+					"objectClass": "soalan3",
+					"sid": 268758844191349,
+					"parameters": {
+						"frame-number": "frame"
+					}
+				}
+			],
+			"sid": 396368039934756
 		}
 	],
 	"sid": 850413981257735

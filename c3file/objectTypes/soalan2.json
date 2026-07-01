@@ -1,10 +1,18 @@
 {
-	"name": "Screenshot20260628At111116AM",
+	"name": "soalan2",
 	"plugin-id": "Sprite",
-	"sid": 449532484953880,
+	"sid": 894604595026887,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
-	"instanceVariables": [],
+	"instanceVariables": [
+		{
+			"name": "item",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 828591103914644
+		}
+	],
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"animations": {
@@ -12,21 +20,21 @@
 			{
 				"frames": [
 					{
-						"width": 1094,
-						"height": 544,
+						"width": 990,
+						"height": 672,
 						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 9164219,
+						"imageSpriteId": 1510395,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
 					}
 				],
-				"sid": 477492270367585,
+				"sid": 378767755825053,
 				"name": "Default",
 				"isLooping": false,
 				"isPingPong": false,
