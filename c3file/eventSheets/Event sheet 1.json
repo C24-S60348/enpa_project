@@ -113,6 +113,20 @@
 					]
 				},
 				{
+					"callFunction": "clearText",
+					"sid": 817402759851093,
+					"parameters": [
+						"\"End1\""
+					]
+				},
+				{
+					"callFunction": "clearText",
+					"sid": 119601372658738,
+					"parameters": [
+						"\"End2\""
+					]
+				},
+				{
 					"callFunction": "setText",
 					"sid": 463537425187293,
 					"parameters": [
@@ -141,7 +155,16 @@
 				},
 				{
 					"callFunction": "setText",
-					"sid": 705385077150053,
+					"sid": 471920534269208,
+					"parameters": [
+						"\"End1\"",
+						"\"THANK YOU\"",
+						"0.5"
+					]
+				},
+				{
+					"callFunction": "setText",
+					"sid": 352028099508728,
 					"parameters": [
 						"\"2\"",
 						"\"NON-PROFIT ORGANIZATION ACCOUNT\"",
@@ -181,6 +204,15 @@
 					"parameters": [
 						"\"3\"",
 						"\"MUHAMMAD ZAKI BIN AB. MULUK\nZARIYAH BINTI ABDULLAH\"",
+						"1"
+					]
+				},
+				{
+					"callFunction": "setText",
+					"sid": 690037979201945,
+					"parameters": [
+						"\"End2\"",
+						"\"NON-PROFIT ORGANIZATION ACCOUNT\"",
 						"1"
 					]
 				}
@@ -294,6 +326,11 @@
 					"parameters": {
 						"object": "nextbutton"
 					}
+				},
+				{
+					"id": "is-visible",
+					"objectClass": "nextbutton",
+					"sid": 839290848092430
 				}
 			],
 			"actions": [],
