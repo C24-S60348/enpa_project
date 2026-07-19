@@ -414,7 +414,26 @@
 					"sid": 711589684871412
 				}
 			],
-			"actions": [],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "pilihanjawapan",
+					"sid": 570478736985458,
+					"parameters": {
+						"instance-variable": "xx",
+						"value": "Self.X"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "pilihanjawapan",
+					"sid": 308366730327637,
+					"parameters": {
+						"instance-variable": "yy",
+						"value": "Self.Y"
+					}
+				}
+			],
 			"sid": 954519546471825,
 			"children": [
 				{
@@ -453,6 +472,20 @@
 					],
 					"actions": [
 						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 290123434578287,
+							"parameters": {
+								"audio-file": {
+									"path": "typing sound"
+								},
+								"loop": "not-looping",
+								"volume": "0",
+								"stereo-pan": "0",
+								"tag-optional": "\"type\""
+							}
+						},
+						{
 							"id": "set-visible",
 							"objectClass": "nextbutton",
 							"sid": 751722240616965,
@@ -476,9 +509,83 @@
 							"parameters": {
 								"visibility": "visible"
 							}
+						},
+						{
+							"id": "stop",
+							"objectClass": "Audio",
+							"sid": 382493322773490,
+							"parameters": {
+								"tag": "\"type\""
+							}
 						}
 					],
 					"sid": 798069349372584,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "nextbutton",
+							"sid": 121066063606555,
+							"parameters": {
+								"instance-variable": "goto",
+								"comparison": 0,
+								"value": "\"Layout 4\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 747563160277953,
+							"parameters": {
+								"audio-file": {
+									"path": "typing sound"
+								},
+								"loop": "not-looping",
+								"volume": "0",
+								"stereo-pan": "0",
+								"tag-optional": "\"type\""
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "nextbutton",
+							"sid": 579302882728953,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 308831136808992,
+							"parameters": {
+								"seconds": "10",
+								"use-timescale": true
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "nextbutton",
+							"sid": 640255896901979,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "stop",
+							"objectClass": "Audio",
+							"sid": 401612018922947,
+							"parameters": {
+								"tag": "\"type\""
+							}
+						}
+					],
+					"sid": 677463392590577,
 					"isOrBlock": true
 				}
 			]
@@ -681,6 +788,203 @@
 				}
 			],
 			"sid": 396368039934756
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-any-touch-end",
+					"objectClass": "Touch",
+					"sid": 103654206161322
+				}
+			],
+			"actions": [],
+			"sid": 746971188246655
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-drag-start",
+					"objectClass": "pilihanjawapan",
+					"sid": 538973382585393,
+					"behaviorType": "DragDrop"
+				}
+			],
+			"actions": [],
+			"sid": 691010731004982,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "pilihanjawapan",
+							"sid": 516535385645534,
+							"parameters": {
+								"instance-variable": "dahletak",
+								"comparison": 0,
+								"value": "1"
+							}
+						},
+						{
+							"id": "pick-nearestfurthest",
+							"objectClass": "tempatletak",
+							"sid": 562208271885585,
+							"parameters": {
+								"which": "nearest",
+								"x": "pilihanjawapan.X",
+								"y": "pilihanjawapan.Y",
+								"pick-all-tied": false
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "tempatletak",
+							"sid": 739803743570208,
+							"parameters": {
+								"instance-variable": "itemcount",
+								"value": "0"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "pilihanjawapan",
+							"sid": 799952099182912,
+							"parameters": {
+								"instance-variable": "item",
+								"value": "\"dragging\""
+							}
+						}
+					],
+					"sid": 258810939324913
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 154175860138708
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "pilihanjawapan",
+							"sid": 870827637794092,
+							"parameters": {
+								"instance-variable": "item",
+								"value": "\"dragging\""
+							}
+						}
+					],
+					"sid": 558647209685372
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-drop",
+					"objectClass": "pilihanjawapan",
+					"sid": 318054418745124,
+					"behaviorType": "DragDrop"
+				}
+			],
+			"actions": [],
+			"sid": 216770317877934,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "pilihanjawapan",
+							"sid": 517019410540723,
+							"parameters": {
+								"object": "tempatletak"
+							}
+						},
+						{
+							"id": "pick-nearestfurthest",
+							"objectClass": "tempatletak",
+							"sid": 584180635177219,
+							"parameters": {
+								"which": "nearest",
+								"x": "pilihanjawapan.X",
+								"y": "pilihanjawapan.Y",
+								"pick-all-tied": false
+							}
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "tempatletak",
+							"sid": 951653740155957,
+							"parameters": {
+								"instance-variable": "itemcount",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "pilihanjawapan",
+							"sid": 711235748040868,
+							"parameters": {
+								"x": "tempatletak.X",
+								"y": "tempatletak.Y"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "tempatletak",
+							"sid": 425645026842487,
+							"parameters": {
+								"instance-variable": "itemcount",
+								"value": "1"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "pilihanjawapan",
+							"sid": 975436298638029,
+							"parameters": {
+								"instance-variable": "dahletak",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 648123010643481
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 542696471265422
+						}
+					],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "pilihanjawapan",
+							"sid": 838334387373072,
+							"parameters": {
+								"x": "Self.xx",
+								"y": "Self.yy"
+							}
+						}
+					],
+					"sid": 500572952577740
+				}
+			]
 		}
 	],
 	"sid": 850413981257735

@@ -245,10 +245,10 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 1730,
-						"y": 919,
+						"x": 1734,
+						"y": 938,
 						"width": 232.99999999999997,
-						"height": 226,
+						"height": 116,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [

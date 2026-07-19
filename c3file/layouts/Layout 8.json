@@ -222,7 +222,12 @@
 					"uid": 87,
 					"sid": 382265435240484,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"item": "",
+						"xx": 0,
+						"yy": 0,
+						"dahletak": 0
+					},
 					"behaviors": {
 						"DragDrop": {
 							"properties": {
@@ -262,7 +267,12 @@
 					"uid": 88,
 					"sid": 402329930188350,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"item": "",
+						"xx": 0,
+						"yy": 0,
+						"dahletak": 0
+					},
 					"behaviors": {
 						"DragDrop": {
 							"properties": {
@@ -302,7 +312,12 @@
 					"uid": 89,
 					"sid": 634341189392073,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"item": "",
+						"xx": 0,
+						"yy": 0,
+						"dahletak": 0
+					},
 					"behaviors": {
 						"DragDrop": {
 							"properties": {
@@ -342,7 +357,12 @@
 					"uid": 90,
 					"sid": 762924319020548,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"item": "",
+						"xx": 0,
+						"yy": 0,
+						"dahletak": 0
+					},
 					"behaviors": {
 						"DragDrop": {
 							"properties": {
@@ -382,7 +402,12 @@
 					"uid": 91,
 					"sid": 552198923098861,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"item": "",
+						"xx": 0,
+						"yy": 0,
+						"dahletak": 0
+					},
 					"behaviors": {
 						"DragDrop": {
 							"properties": {
@@ -422,7 +447,12 @@
 					"uid": 92,
 					"sid": 672917705671807,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"item": "",
+						"xx": 0,
+						"yy": 0,
+						"dahletak": 0
+					},
 					"behaviors": {
 						"DragDrop": {
 							"properties": {
@@ -462,7 +492,12 @@
 					"uid": 93,
 					"sid": 368889406984658,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"item": "",
+						"xx": 0,
+						"yy": 0,
+						"dahletak": 0
+					},
 					"behaviors": {
 						"DragDrop": {
 							"properties": {
@@ -502,7 +537,12 @@
 					"uid": 94,
 					"sid": 342125584983925,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"item": "",
+						"xx": 0,
+						"yy": 0,
+						"dahletak": 0
+					},
 					"behaviors": {
 						"DragDrop": {
 							"properties": {
@@ -542,7 +582,12 @@
 					"uid": 95,
 					"sid": 361506380827074,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"item": "",
+						"xx": 0,
+						"yy": 0,
+						"dahletak": 0
+					},
 					"behaviors": {
 						"DragDrop": {
 							"properties": {
@@ -582,7 +627,12 @@
 					"uid": 96,
 					"sid": 221732962509994,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"item": "",
+						"xx": 0,
+						"yy": 0,
+						"dahletak": 0
+					},
 					"behaviors": {
 						"DragDrop": {
 							"properties": {
@@ -622,7 +672,12 @@
 					"uid": 97,
 					"sid": 250887261844491,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"item": "",
+						"xx": 0,
+						"yy": 0,
+						"dahletak": 0
+					},
 					"behaviors": {
 						"DragDrop": {
 							"properties": {
@@ -662,7 +717,12 @@
 					"uid": 98,
 					"sid": 918204215746524,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"item": "",
+						"xx": 0,
+						"yy": 0,
+						"dahletak": 0
+					},
 					"behaviors": {
 						"DragDrop": {
 							"properties": {
@@ -702,7 +762,12 @@
 					"uid": 99,
 					"sid": 549153499511451,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"item": "",
+						"xx": 0,
+						"yy": 0,
+						"dahletak": 0
+					},
 					"behaviors": {
 						"DragDrop": {
 							"properties": {

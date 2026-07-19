@@ -4,7 +4,36 @@
 	"sid": 538765294561083,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
-	"instanceVariables": [],
+	"instanceVariables": [
+		{
+			"name": "item",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 829314686026903
+		},
+		{
+			"name": "xx",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 678768510297117
+		},
+		{
+			"name": "yy",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 189678371137710
+		},
+		{
+			"name": "dahletak",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 788773891935030
+		}
+	],
 	"behaviorTypes": [
 		{
 			"behaviorId": "DragnDrop",
