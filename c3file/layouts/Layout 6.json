@@ -110,8 +110,8 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 1793,
-						"y": 958,
+						"x": 1818,
+						"y": 756,
 						"width": 198,
 						"height": 122,
 						"originX": 0.5,
@@ -196,8 +196,8 @@
 					"world": {
 						"x": 945,
 						"y": 547,
-						"width": 1600,
-						"height": 454,
+						"width": 1583.306802498798,
+						"height": 440.65526671954484,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -1071,15 +1071,17 @@
 					"tags": "",
 					"instanceVariables": {
 						"item": "1",
-						"itemcount": 0
+						"itemcount": 0,
+						"jwpnforframe": "2",
+						"jwpn2forframe": "11"
 					},
 					"behaviors": {},
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 503.5,
+						"x": 482.75235847148406,
 						"y": 438,
-						"width": 333,
+						"width": 291.5047169429681,
 						"height": 82,
 						"originX": 0.5,
 						"originY": 0.5,
@@ -1107,15 +1109,17 @@
 					"tags": "",
 					"instanceVariables": {
 						"item": "5",
-						"itemcount": 0
+						"itemcount": 0,
+						"jwpnforframe": "10",
+						"jwpn2forframe": ""
 					},
 					"behaviors": {},
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 503.5,
+						"x": 482.756534425974,
 						"y": 528,
-						"width": 338,
+						"width": 296.51306885194793,
 						"height": 82,
 						"originX": 0.5,
 						"originY": 0.5,
@@ -1143,15 +1147,17 @@
 					"tags": "",
 					"instanceVariables": {
 						"item": "2",
-						"itemcount": 0
+						"itemcount": 0,
+						"jwpnforframe": "5",
+						"jwpn2forframe": ""
 					},
 					"behaviors": {},
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 795.5,
+						"x": 776.4772746834849,
 						"y": 437,
-						"width": 226,
+						"width": 264.0454506330302,
 						"height": 82,
 						"originX": 0.5,
 						"originY": 0.5,
@@ -1179,15 +1185,17 @@
 					"tags": "",
 					"instanceVariables": {
 						"item": "3",
-						"itemcount": 0
+						"itemcount": 0,
+						"jwpnforframe": "2",
+						"jwpn2forframe": "11"
 					},
 					"behaviors": {},
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 1304,
+						"x": 1249,
 						"y": 435,
-						"width": 432,
+						"width": 322,
 						"height": 82,
 						"originX": 0.5,
 						"originY": 0.5,
@@ -1215,15 +1223,17 @@
 					"tags": "",
 					"instanceVariables": {
 						"item": "4",
-						"itemcount": 0
+						"itemcount": 0,
+						"jwpnforframe": "7",
+						"jwpn2forframe": ""
 					},
 					"behaviors": {},
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 1626.5,
+						"x": 1571.5,
 						"y": 436,
-						"width": 205,
+						"width": 315,
 						"height": 82,
 						"originX": 0.5,
 						"originY": 0.5,
@@ -1251,15 +1261,17 @@
 					"tags": "",
 					"instanceVariables": {
 						"item": "9",
-						"itemcount": 0
+						"itemcount": 0,
+						"jwpnforframe": "1",
+						"jwpn2forframe": "3"
 					},
 					"behaviors": {},
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 507,
+						"x": 486.256534425974,
 						"y": 625,
-						"width": 338,
+						"width": 296.51306885194793,
 						"height": 82,
 						"originX": 0.5,
 						"originY": 0.5,
@@ -1287,15 +1299,17 @@
 					"tags": "",
 					"instanceVariables": {
 						"item": "6",
-						"itemcount": 0
+						"itemcount": 0,
+						"jwpnforframe": "9",
+						"jwpn2forframe": ""
 					},
 					"behaviors": {},
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 796,
+						"x": 776.9772746834849,
 						"y": 529,
-						"width": 226,
+						"width": 264.0454506330302,
 						"height": 82,
 						"originX": 0.5,
 						"originY": 0.5,
@@ -1323,15 +1337,17 @@
 					"tags": "",
 					"instanceVariables": {
 						"item": "10",
-						"itemcount": 0
+						"itemcount": 0,
+						"jwpnforframe": "8",
+						"jwpn2forframe": ""
 					},
 					"behaviors": {},
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 794,
+						"x": 774.9772746834849,
 						"y": 621,
-						"width": 226,
+						"width": 264.0454506330302,
 						"height": 82,
 						"originX": 0.5,
 						"originY": 0.5,
@@ -1359,15 +1375,17 @@
 					"tags": "",
 					"instanceVariables": {
 						"item": "8",
-						"itemcount": 0
+						"itemcount": 0,
+						"jwpnforframe": "0",
+						"jwpn2forframe": ""
 					},
 					"behaviors": {},
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 1626.5,
+						"x": 1571.5,
 						"y": 527,
-						"width": 197,
+						"width": 307,
 						"height": 82,
 						"originX": 0.5,
 						"originY": 0.5,
@@ -1395,15 +1413,17 @@
 					"tags": "",
 					"instanceVariables": {
 						"item": "12",
-						"itemcount": 0
+						"itemcount": 0,
+						"jwpnforframe": "6",
+						"jwpn2forframe": ""
 					},
 					"behaviors": {},
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 1629,
+						"x": 1574,
 						"y": 621,
-						"width": 197,
+						"width": 307,
 						"height": 82,
 						"originX": 0.5,
 						"originY": 0.5,
@@ -1431,15 +1451,17 @@
 					"tags": "",
 					"instanceVariables": {
 						"item": "7",
-						"itemcount": 0
+						"itemcount": 0,
+						"jwpnforframe": "4",
+						"jwpn2forframe": ""
 					},
 					"behaviors": {},
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 1303,
+						"x": 1248,
 						"y": 529,
-						"width": 432,
+						"width": 322,
 						"height": 82,
 						"originX": 0.5,
 						"originY": 0.5,
@@ -1467,15 +1489,17 @@
 					"tags": "",
 					"instanceVariables": {
 						"item": "11",
-						"itemcount": 0
+						"itemcount": 0,
+						"jwpnforframe": "1",
+						"jwpn2forframe": "3"
 					},
 					"behaviors": {},
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 1305,
+						"x": 1250,
 						"y": 622,
-						"width": 432,
+						"width": 322,
 						"height": 82,
 						"originX": 0.5,
 						"originY": 0.5,
@@ -1506,10 +1530,10 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 1637,
-						"y": 964,
-						"width": 497.9232700146538,
-						"height": 121.6813988191733,
+						"x": 1707.283650351444,
+						"y": 981.1757646286138,
+						"width": 357.35596931176553,
+						"height": 87.32986956194573,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -1612,6 +1636,57 @@
 						"y": 719,
 						"width": 287,
 						"height": 84,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "Text",
+					"properties": {
+						"text": "? / ?",
+						"enable-bbcode": true,
+						"font": "Arial",
+						"size": 30,
+						"line-height": 0,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "center",
+						"vertical-alignment": "center",
+						"wrapping": "word",
+						"text-direction": "ltr",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 159,
+					"sid": 796383889711891,
+					"tags": "",
+					"instanceVariables": {
+						"item": "64"
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 1707,
+						"y": 901,
+						"width": 336.41950328686477,
+						"height": 96.30832839192598,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [

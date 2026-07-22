@@ -110,8 +110,8 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 1793,
-						"y": 958,
+						"x": 1802,
+						"y": 699,
 						"width": 198,
 						"height": 122,
 						"originX": 0.5,
@@ -886,6 +886,629 @@
 						"y": 132,
 						"width": 416.4629178740424,
 						"height": 255.8163444345124,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "tempatletak",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 160,
+					"sid": 646643056792855,
+					"tags": "",
+					"instanceVariables": {
+						"item": "1",
+						"itemcount": 0,
+						"jwpnforframe": "14",
+						"jwpn2forframe": ""
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 384,
+						"y": 413,
+						"width": 359.5047169429681,
+						"height": 48,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "tempatletak",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 161,
+					"sid": 874657435649938,
+					"tags": "",
+					"instanceVariables": {
+						"item": "1",
+						"itemcount": 0,
+						"jwpnforframe": "15",
+						"jwpn2forframe": ""
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 384,
+						"y": 464,
+						"width": 359.5047169429681,
+						"height": 48,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "tempatletak",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 162,
+					"sid": 410215554884974,
+					"tags": "",
+					"instanceVariables": {
+						"item": "1",
+						"itemcount": 0,
+						"jwpnforframe": "16",
+						"jwpn2forframe": ""
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 382,
+						"y": 568,
+						"width": 359.5047169429681,
+						"height": 48,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "tempatletak",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 163,
+					"sid": 580597716550889,
+					"tags": "",
+					"instanceVariables": {
+						"item": "1",
+						"itemcount": 0,
+						"jwpnforframe": "23",
+						"jwpn2forframe": ""
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 384,
+						"y": 625,
+						"width": 359.5047169429681,
+						"height": 48,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "tempatletak",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 164,
+					"sid": 283925208952228,
+					"tags": "",
+					"instanceVariables": {
+						"item": "1",
+						"itemcount": 0,
+						"jwpnforframe": "22",
+						"jwpn2forframe": ""
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 382,
+						"y": 676,
+						"width": 359.5047169429681,
+						"height": 48,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "tempatletak",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 165,
+					"sid": 392440933169035,
+					"tags": "",
+					"instanceVariables": {
+						"item": "1",
+						"itemcount": 0,
+						"jwpnforframe": "13",
+						"jwpn2forframe": ""
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 1179,
+						"y": 413,
+						"width": 359.5047169429681,
+						"height": 48,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "tempatletak",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 166,
+					"sid": 391526449627088,
+					"tags": "",
+					"instanceVariables": {
+						"item": "1",
+						"itemcount": 0,
+						"jwpnforframe": "67",
+						"jwpn2forframe": ""
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 777.5,
+						"y": 411,
+						"width": 420.5047169429681,
+						"height": 48,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "tempatletak",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 167,
+					"sid": 540593118267816,
+					"tags": "",
+					"instanceVariables": {
+						"item": "1",
+						"itemcount": 0,
+						"jwpnforframe": "21",
+						"jwpn2forframe": ""
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 777.5,
+						"y": 462,
+						"width": 420.5047169429681,
+						"height": 48,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "tempatletak",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 168,
+					"sid": 445652303877031,
+					"tags": "",
+					"instanceVariables": {
+						"item": "1",
+						"itemcount": 0,
+						"jwpnforframe": "19",
+						"jwpn2forframe": ""
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 775.5,
+						"y": 566,
+						"width": 420.5047169429681,
+						"height": 48,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "tempatletak",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 169,
+					"sid": 731652943921221,
+					"tags": "",
+					"instanceVariables": {
+						"item": "1",
+						"itemcount": 0,
+						"jwpnforframe": "24",
+						"jwpn2forframe": ""
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 777.5,
+						"y": 623,
+						"width": 420.5047169429681,
+						"height": 48,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "tempatletak",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 170,
+					"sid": 126951979632326,
+					"tags": "",
+					"instanceVariables": {
+						"item": "1",
+						"itemcount": 0,
+						"jwpnforframe": "25",
+						"jwpn2forframe": ""
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 775.5,
+						"y": 674,
+						"width": 420.5047169429681,
+						"height": 48,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "tempatletak",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 171,
+					"sid": 759191148632676,
+					"tags": "",
+					"instanceVariables": {
+						"item": "1",
+						"itemcount": 0,
+						"jwpnforframe": "18",
+						"jwpn2forframe": ""
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 780,
+						"y": 513,
+						"width": 420.5047169429681,
+						"height": 48,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "tempatletak",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 172,
+					"sid": 959097487097157,
+					"tags": "",
+					"instanceVariables": {
+						"item": "1",
+						"itemcount": 0,
+						"jwpnforframe": "17",
+						"jwpn2forframe": ""
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 1535.5,
+						"y": 415,
+						"width": 340.5047169429681,
+						"height": 48,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "pilihanjawapan",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Default",
+						"initial-frame": 67,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 173,
+					"sid": 754696019495909,
+					"tags": "",
+					"instanceVariables": {
+						"item": "",
+						"xx": 0,
+						"yy": 0,
+						"dahletak": 0
+					},
+					"behaviors": {
+						"DragDrop": {
+							"properties": {
+								"axes": "both",
+								"enabled": true
+							}
+						}
+					},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 1592,
+						"y": 821,
+						"width": 264.6569207753421,
+						"height": 69.90937529914697,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "Screenshot20260719At24320PM",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Default",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 174,
+					"sid": 610478121636049,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 1710,
+						"y": 1000,
+						"width": 357.35596931176553,
+						"height": 87.32986956194574,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "Text",
+					"properties": {
+						"text": "? / ?",
+						"enable-bbcode": true,
+						"font": "Arial",
+						"size": 30,
+						"line-height": 0,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "center",
+						"vertical-alignment": "center",
+						"wrapping": "word",
+						"text-direction": "ltr",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "center",
+						"read-aloud": false
+					},
+					"uid": 175,
+					"sid": 594633140680252,
+					"tags": "",
+					"instanceVariables": {
+						"item": "64"
+					},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 1710,
+						"y": 920,
+						"width": 336.41950328686477,
+						"height": 96.30832839192598,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [

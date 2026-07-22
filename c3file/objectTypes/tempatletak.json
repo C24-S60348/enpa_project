@@ -18,6 +18,20 @@
 			"desc": "",
 			"show": true,
 			"sid": 408388513332748
+		},
+		{
+			"name": "jwpnforframe",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 192233875085327
+		},
+		{
+			"name": "jwpn2forframe",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 154354780620050
 		}
 	],
 	"behaviorTypes": [],

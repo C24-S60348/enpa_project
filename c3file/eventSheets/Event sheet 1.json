@@ -390,25 +390,6 @@
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "on-drag-start",
-					"objectClass": "pilihanjawapan",
-					"sid": 600311775954564,
-					"behaviorType": "DragDrop"
-				}
-			],
-			"actions": [
-				{
-					"id": "move-to-top",
-					"objectClass": "pilihanjawapan",
-					"sid": 945334945506249
-				}
-			],
-			"sid": 139316802958622
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
 					"id": "on-start-of-layout",
 					"objectClass": "System",
 					"sid": 711589684871412
@@ -793,25 +774,19 @@
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "on-any-touch-end",
-					"objectClass": "Touch",
-					"sid": 103654206161322
-				}
-			],
-			"actions": [],
-			"sid": 746971188246655
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
 					"id": "on-drag-start",
 					"objectClass": "pilihanjawapan",
 					"sid": 538973382585393,
 					"behaviorType": "DragDrop"
 				}
 			],
-			"actions": [],
+			"actions": [
+				{
+					"id": "move-to-top",
+					"objectClass": "pilihanjawapan",
+					"sid": 978895644035418
+				}
+			],
 			"sid": 691010731004982,
 			"children": [
 				{
@@ -983,6 +958,212 @@
 						}
 					],
 					"sid": 500572952577740
+				}
+			]
+		},
+		{
+			"eventType": "variable",
+			"name": "jwpnbetultotal",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 908101666588920
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tap-object",
+					"objectClass": "Touch",
+					"sid": 360090206836083,
+					"parameters": {
+						"object": "Screenshot20260719At24320PM"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 128409734615730,
+					"parameters": {
+						"variable": "jwpnbetultotal",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 242525059576298,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 544878155954341,
+							"parameters": {
+								"object": "pilihanjawapan"
+							}
+						},
+						{
+							"id": "pick-nearestfurthest",
+							"objectClass": "tempatletak",
+							"sid": 204989257555517,
+							"parameters": {
+								"which": "nearest",
+								"x": "pilihanjawapan.X",
+								"y": "pilihanjawapan.Y",
+								"pick-all-tied": false
+							}
+						}
+					],
+					"actions": [],
+					"sid": 734146780062840,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "tempatletak",
+									"sid": 460668665296895,
+									"parameters": {
+										"instance-variable": "jwpnforframe",
+										"comparison": 0,
+										"value": "str(pilihanjawapan.AnimationFrame)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "append-text",
+									"objectClass": "Text",
+									"sid": 497057905388144,
+									"disabled": true,
+									"parameters": {
+										"text": "tempatletak.jwpnforframe"
+									}
+								},
+								{
+									"id": "add-to-eventvar",
+									"objectClass": "System",
+									"sid": 356206849911991,
+									"parameters": {
+										"variable": "jwpnbetultotal",
+										"value": "1"
+									}
+								},
+								{
+									"id": "append-text",
+									"objectClass": "Text",
+									"sid": 990520093728833,
+									"disabled": true,
+									"parameters": {
+										"text": "pilihanjawapan.AnimationFrame"
+									}
+								},
+								{
+									"id": "append-text",
+									"objectClass": "Text",
+									"sid": 968593267060618,
+									"disabled": true,
+									"parameters": {
+										"text": "\"1\""
+									}
+								}
+							],
+							"sid": 567542576695579,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 526888398613902
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "tempatletak",
+									"sid": 492921906413323,
+									"parameters": {
+										"instance-variable": "jwpn2forframe",
+										"comparison": 1,
+										"value": "\"\""
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "tempatletak",
+									"sid": 906597999439210,
+									"parameters": {
+										"instance-variable": "jwpn2forframe",
+										"comparison": 0,
+										"value": "str(pilihanjawapan.AnimationFrame)"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "append-text",
+									"objectClass": "Text",
+									"sid": 763355521500615,
+									"disabled": true,
+									"parameters": {
+										"text": "tempatletak.jwpn2forframe"
+									}
+								},
+								{
+									"id": "add-to-eventvar",
+									"objectClass": "System",
+									"sid": 555131163424701,
+									"parameters": {
+										"variable": "jwpnbetultotal",
+										"value": "1"
+									}
+								},
+								{
+									"id": "append-text",
+									"objectClass": "Text",
+									"sid": 790640278532574,
+									"disabled": true,
+									"parameters": {
+										"text": "pilihanjawapan.AnimationFrame"
+									}
+								}
+							],
+							"sid": 797222616693512
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Text",
+							"sid": 759910406332918,
+							"parameters": {
+								"instance-variable": "item",
+								"comparison": 0,
+								"value": "\"64\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "Text",
+							"sid": 920862615215680,
+							"parameters": {
+								"text": "jwpnbetultotal & \"/14\""
+							}
+						}
+					],
+					"sid": 615937845720840
 				}
 			]
 		}
