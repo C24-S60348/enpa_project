@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(adb devices)",
+      "Bash(flutter analyze *)",
+      "mcp__Claude_Preview__preview_screenshot"
+    ]
+  }
+}

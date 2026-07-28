@@ -2,6 +2,26 @@
 	"name": "Event sheet 1",
 	"events": [
 		{
+			"eventType": "variable",
+			"name": "jwpnletak",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 716861172185394
+		},
+		{
+			"eventType": "variable",
+			"name": "jwpntotal",
+			"type": "number",
+			"initialValue": "12",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 995265018522470
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -11,6 +31,14 @@
 				}
 			],
 			"actions": [
+				{
+					"id": "set-visible",
+					"objectClass": "checkanswerbtn",
+					"sid": 611891875590406,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				},
 				{
 					"id": "set-layer-visible",
 					"objectClass": "System",
@@ -114,6 +142,13 @@
 				},
 				{
 					"callFunction": "clearText",
+					"sid": 406787699144239,
+					"parameters": [
+						"\"64\""
+					]
+				},
+				{
+					"callFunction": "clearText",
 					"sid": 817402759851093,
 					"parameters": [
 						"\"End1\""
@@ -145,11 +180,29 @@
 					]
 				},
 				{
+					"callFunction": "setText",
+					"sid": 467601219706510,
+					"parameters": [
+						"\"33\"",
+						"\"                                                                                                  refers to the accounting system used by organizations that operate to provide services and benefits to the public or their members rather than to earn profit. These organizations include charities, clubs, religious institutions, educational societies, and non-governmental organizations (NGOs).\n\nThe main purpose of this accounting system is to record financial transactions accurately, ensure transparency and accountability, and show how funds such as donations, grants, sponsorships, and membership fees are utilized. Unlike business organizations, non-profit organizations do not distribute profits to owners or shareholders. Instead, any surplus earned is reinvested into the organization to support its activities and objectives.\n\nNon-profit organizations usually prepare several financial statements, including the Receipts and Payments Account, Income and Expenditure Account, and Balance Sheet or Statement of Financial Position. The Receipts and Payments Account records all cash received and paid during a specific period, while the Income and Expenditure Account determines whether the organization has a surplus or deficit. The Balance Sheet shows the organization’s assets, liabilities, and accumulated funds.\n\nProper accounting practices are important for non-profit organizations to maintain public trust, ensure responsible management of funds, and support effective decision-making for future programs and activities.\"",
+						"15"
+					]
+				},
+				{
 					"id": "wait",
 					"objectClass": "System",
-					"sid": 800614128432401,
+					"sid": 435639641699885,
 					"parameters": {
-						"seconds": "1.0",
+						"seconds": "0.5",
+						"use-timescale": true
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 147446789065030,
+					"parameters": {
+						"seconds": "0.5",
 						"use-timescale": true
 					}
 				},
@@ -178,15 +231,6 @@
 						"\"21\"",
 						"\"NON-PROFIT ACCOUNT?\"",
 						"1"
-					]
-				},
-				{
-					"callFunction": "setText",
-					"sid": 274662676451042,
-					"parameters": [
-						"\"33\"",
-						"\"                                                                                                  refers to the accounting system used by organizations that operate to provide services and benefits to the public or their members rather than to earn profit. These organizations include charities, clubs, religious institutions, educational societies, and non-governmental organizations (NGOs).\n\nThe main purpose of this accounting system is to record financial transactions accurately, ensure transparency and accountability, and show how funds such as donations, grants, sponsorships, and membership fees are utilized. Unlike business organizations, non-profit organizations do not distribute profits to owners or shareholders. Instead, any surplus earned is reinvested into the organization to support its activities and objectives.\n\nNon-profit organizations usually prepare several financial statements, including the Receipts and Payments Account, Income and Expenditure Account, and Balance Sheet or Statement of Financial Position. The Receipts and Payments Account records all cash received and paid during a specific period, while the Income and Expenditure Account determines whether the organization has a surplus or deficit. The Balance Sheet shows the organization’s assets, liabilities, and accumulated funds.\n\nProper accounting practices are important for non-profit organizations to maintain public trust, ensure responsible management of funds, and support effective decision-making for future programs and activities.\"",
-						"15"
 					]
 				},
 				{
@@ -333,7 +377,22 @@
 					"sid": 839290848092430
 				}
 			],
-			"actions": [],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 708048578067270,
+					"parameters": {
+						"audio-file": {
+							"path": "click"
+						},
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				}
+			],
 			"sid": 913948688791881,
 			"children": [
 				{
@@ -568,6 +627,64 @@
 					],
 					"sid": 677463392590577,
 					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "nextbutton",
+							"sid": 451615359946522,
+							"parameters": {
+								"instance-variable": "goto",
+								"comparison": 0,
+								"value": "\"Layout 7\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "nextbutton",
+							"sid": 161186459970420,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 979374428818724,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-tag-playing",
+							"objectClass": "Audio",
+							"sid": 436965339729509,
+							"parameters": {
+								"tag": "\"bg\""
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 148842486725666,
+							"parameters": {
+								"audio-file": {
+									"path": "background_music"
+								},
+								"loop": "looping",
+								"volume": "-5",
+								"stereo-pan": "0",
+								"tag-optional": "\"bg\""
+							}
+						}
+					],
+					"sid": 370184831073269
 				}
 			]
 		},
@@ -594,6 +711,20 @@
 				}
 			],
 			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 658177005745777,
+					"parameters": {
+						"audio-file": {
+							"path": "hover"
+						},
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				},
 				{
 					"id": "set-scale",
 					"objectClass": "nextbutton",
@@ -681,6 +812,20 @@
 			],
 			"actions": [
 				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 418551162955065,
+					"parameters": {
+						"audio-file": {
+							"path": "popup_open"
+						},
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				},
+				{
 					"id": "set-layer-visible",
 					"objectClass": "System",
 					"sid": 214111974715483,
@@ -717,6 +862,20 @@
 				}
 			],
 			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 501014567047161,
+					"parameters": {
+						"audio-file": {
+							"path": "popup_close"
+						},
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				},
 				{
 					"id": "set-layer-visible",
 					"objectClass": "System",
@@ -785,6 +944,20 @@
 					"id": "move-to-top",
 					"objectClass": "pilihanjawapan",
 					"sid": 978895644035418
+				},
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 705083048631528,
+					"parameters": {
+						"audio-file": {
+							"path": "drag_pickup"
+						},
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
 				}
 			],
 			"sid": 691010731004982,
@@ -810,6 +983,7 @@
 								"which": "nearest",
 								"x": "pilihanjawapan.X",
 								"y": "pilihanjawapan.Y",
+								"z": "0",
 								"pick-all-tied": false
 							}
 						}
@@ -834,7 +1008,35 @@
 							}
 						}
 					],
-					"sid": 258810939324913
+					"sid": 258810939324913,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 431139564211048,
+									"parameters": {
+										"variable": "jwpnletak",
+										"comparison": 1,
+										"value": "jwpntotal"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "checkanswerbtn",
+									"sid": 491463443090299,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								}
+							],
+							"sid": 208573510271431
+						}
+					]
 				},
 				{
 					"eventType": "block",
@@ -870,7 +1072,22 @@
 					"behaviorType": "DragDrop"
 				}
 			],
-			"actions": [],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 562880100289685,
+					"parameters": {
+						"audio-file": {
+							"path": "drop_snap"
+						},
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				}
+			],
 			"sid": 216770317877934,
 			"children": [
 				{
@@ -892,6 +1109,7 @@
 								"which": "nearest",
 								"x": "pilihanjawapan.X",
 								"y": "pilihanjawapan.Y",
+								"z": "0",
 								"pick-all-tied": false
 							}
 						},
@@ -924,18 +1142,77 @@
 								"instance-variable": "itemcount",
 								"value": "1"
 							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "pilihanjawapan",
-							"sid": 975436298638029,
-							"parameters": {
-								"instance-variable": "dahletak",
-								"value": "1"
-							}
 						}
 					],
-					"sid": 648123010643481
+					"sid": 648123010643481,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "first time letak"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "pilihanjawapan",
+									"sid": 202703206626385,
+									"parameters": {
+										"instance-variable": "dahletak",
+										"comparison": 0,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "pilihanjawapan",
+									"sid": 390636122689004,
+									"parameters": {
+										"instance-variable": "dahletak",
+										"value": "1"
+									}
+								},
+								{
+									"id": "add-to-eventvar",
+									"objectClass": "System",
+									"sid": 293635593273070,
+									"parameters": {
+										"variable": "jwpnletak",
+										"value": "1"
+									}
+								}
+							],
+							"sid": 510962914975421
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 163826943468762,
+									"parameters": {
+										"variable": "jwpnletak",
+										"comparison": 0,
+										"value": "jwpntotal"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "checkanswerbtn",
+									"sid": 241375388115892,
+									"parameters": {
+										"visibility": "visible"
+									}
+								}
+							],
+							"sid": 105858688684552
+						}
+					]
 				},
 				{
 					"eventType": "block",
@@ -957,7 +1234,45 @@
 							}
 						}
 					],
-					"sid": 500572952577740
+					"sid": 500572952577740,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "pilihanjawapan",
+									"sid": 955720544140357,
+									"parameters": {
+										"instance-variable": "dahletak",
+										"comparison": 0,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "subtract-from-eventvar",
+									"objectClass": "System",
+									"sid": 516282745153776,
+									"parameters": {
+										"variable": "jwpnletak",
+										"value": "1"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "pilihanjawapan",
+									"sid": 811667769328061,
+									"parameters": {
+										"instance-variable": "dahletak",
+										"value": "0"
+									}
+								}
+							],
+							"sid": 447041624474078
+						}
+					]
 				}
 			]
 		},
@@ -979,8 +1294,13 @@
 					"objectClass": "Touch",
 					"sid": 360090206836083,
 					"parameters": {
-						"object": "Screenshot20260719At24320PM"
+						"object": "checkanswerbtn"
 					}
+				},
+				{
+					"id": "is-visible",
+					"objectClass": "checkanswerbtn",
+					"sid": 342011923386804
 				}
 			],
 			"actions": [
@@ -1015,6 +1335,7 @@
 								"which": "nearest",
 								"x": "pilihanjawapan.X",
 								"y": "pilihanjawapan.Y",
+								"z": "0",
 								"pick-all-tied": false
 							}
 						}
@@ -1157,13 +1478,82 @@
 						{
 							"id": "set-text",
 							"objectClass": "Text",
-							"sid": 920862615215680,
+							"sid": 580236993934513,
 							"parameters": {
-								"text": "jwpnbetultotal & \"/14\""
+								"text": "jwpnbetultotal & \"/\" & jwpntotal"
 							}
 						}
 					],
-					"sid": 615937845720840
+					"sid": 615937845720840,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 708565121234624,
+									"parameters": {
+										"variable": "jwpnbetultotal",
+										"comparison": 0,
+										"value": "jwpntotal"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "play",
+									"objectClass": "Audio",
+									"sid": 922533763508216,
+									"parameters": {
+										"audio-file": {
+											"path": "correct"
+										},
+										"loop": "not-looping",
+										"volume": "0",
+										"stereo-pan": "0",
+										"tag-optional": "\"\""
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "nextbutton",
+									"sid": 625104404416474,
+									"parameters": {
+										"visibility": "visible"
+									}
+								}
+							],
+							"sid": 918036276172651
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 129083856689556
+								}
+							],
+							"actions": [
+								{
+									"id": "play",
+									"objectClass": "Audio",
+									"sid": 858634996244967,
+									"parameters": {
+										"audio-file": {
+											"path": "wrong"
+										},
+										"loop": "not-looping",
+										"volume": "0",
+										"stereo-pan": "0",
+										"tag-optional": "\"\""
+									}
+								}
+							],
+							"sid": 162581253156763
+						}
+					]
 				}
 			]
 		}

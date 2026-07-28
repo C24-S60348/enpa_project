@@ -1438,7 +1438,7 @@
 					}
 				},
 				{
-					"type": "Screenshot20260719At24320PM",
+					"type": "checkanswerbtn",
 					"properties": {
 						"initially-visible": true,
 						"initial-animation": "Default",

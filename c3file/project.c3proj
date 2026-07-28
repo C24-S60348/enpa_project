@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 48703,
+	"savedWithRelease": 49500,
 	"name": "Enpa",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -95,7 +95,7 @@
 			"Screenshot20260702At11916AM",
 			"tempatletak",
 			"Audio",
-			"Screenshot20260719At24320PM"
+			"checkanswerbtn"
 		],
 		"subfolders": []
 	},
@@ -138,6 +138,118 @@
 					"name": "typing sound.webm",
 					"type": "audio/webm; codecs=opus",
 					"sid": 746400950307646,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "background_music.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 394226489582171,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "hover.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 352806233904547,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "wrong.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 734306147137380,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "drag_pickup.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 319482471622202,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "correct.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 851208631863136,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "complete.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 446408410044875,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "score_tick.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 579030913777424,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "drop_snap.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 967553141960172,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "click.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 633145814067202,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "popup_close.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 538813335267165,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "whoosh.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 698352165375326,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "popup_open.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 246583457419417,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "typing_4s.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 784930321702167,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "typing_10s.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 596603418004796,
 					"file-info": {
 						"purpose": "none"
 					}
